@@ -125,7 +125,7 @@
                 android:id="@+id/btnSignup"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity=""
                 android:background="@drawable/rounded_button"
                 android:text="Sign Up"
                 android:textColor="#f8fdf9"
