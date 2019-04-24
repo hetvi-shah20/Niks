@@ -11,113 +11,77 @@
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="120dp"
         android:layout_marginRight="15dp"
+
         app:cardBackgroundColor="@android:color/white"
         app:cardCornerRadius="10dp"
         app:cardUseCompatPadding="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
 
 
         <EditText
+
             android:id="@+id/etName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:layout_marginLeft="35dp"
+            android:layout_margin="10dp"
+            android:drawablePadding="10dp"
+            android:drawableLeft="@drawable/ic_person_black_24dp"
             android:layout_marginTop="35dp"
             android:inputType="textPersonName"
             android:hint=" Name" />
 
-        <ImageView
-            android:id="@+id/ivName"
-            android:layout_width="30dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="35dp"
-            app:srcCompat="@drawable/idcard" />
 
 
         <EditText
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
-            android:layout_marginTop="90dp"
+            android:drawableLeft="@drawable/ic_email_black_24dp"
+            android:layout_margin="10dp"
             android:ems="10"
+            android:drawablePadding="10dp"
             android:hint="Email Id"
             android:inputType="textEmailAddress" />
 
-        <ImageView
-            android:id="@+id/ivEmail"
-            android:layout_width="30dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="90dp"
-            app:srcCompat="@drawable/users" />
 
 
         <EditText
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
-            android:layout_marginTop="150dp"
+            android:layout_margin="10dp"
+            android:drawableLeft="@drawable/ic_lock_black_24dp"
             android:ems="10"
+            android:drawablePadding="10dp"
             android:hint="Password"
             android:inputType="textPersonName" />
 
-        <ImageView
-            android:id="@+id/ivPassword"
-            android:layout_width="30dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="150dp"
-            app:srcCompat="@drawable/lock" />
 
 
-        <Button
-            android:id="@+id/btnSignup"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            android:layout_marginTop="170dp"
-            android:background="@drawable/rounded_button"
-            android:text="Sign Up"
-            android:textColor="#f8fdf9"
-            android:textSize="25dp" />
-
-        <ImageView
-            android:id="@+id/ivGender"
-            android:layout_width="30dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="6dp"
-            android:layout_marginTop="210dp"
-            app:srcCompat="@drawable/gender" />
 
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Gender"
-            android:layout_marginTop="215dp"
-            android:layout_marginLeft="50dp"
-            android:textSize="18sp" />
+
+
 
         <RadioGroup
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="215dp"
+            android:layout_margin="10dp"
             android:orientation="horizontal">
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="130dp"
+                android:layout_marginLeft="80dp"
                 android:textSize="18sp"
                 android:text="Male"/>
 
@@ -131,45 +95,43 @@
         </RadioGroup>
 
 
-        <ImageView
-            android:id="@+id/ivPhone"
-            android:layout_width="30dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="6dp"
-            android:layout_marginTop="260dp"
-            app:srcCompat="@drawable/phonebook" />
 
         <EditText
             android:id="@+id/etPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:layout_marginLeft="35dp"
-            android:layout_marginTop="260dp"
+            android:drawablePadding="10dp"
+            android:drawableLeft="@drawable/ic_phone_black_24dp"
+            android:layout_margin="10dp"
             android:hint="Phone Number"
             android:inputType="number" />
 
 
-        <ImageView
-            android:id="@+id/ivAddress"
-            android:layout_width="30dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="6dp"
-            android:layout_marginTop="310dp"
-            app:srcCompat="@drawable/home" />
 
         <EditText
             android:id="@+id/etAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:layout_margin="10dp"
+            android:drawablePadding="10dp"
+            android:drawableLeft="@drawable/ic_home_black_24dp"
             android:gravity="start|top"
             android:hint="Address"
-            android:layout_marginLeft="35dp"
-            android:layout_marginTop="310dp"
             android:inputType="textMultiLine" />
 
+            <Button
+                android:id="@+id/btnSignup"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/rounded_button"
+                android:text="Sign Up"
+                android:textColor="#f8fdf9"
+                android:textSize="25dp" />
 
+        </LinearLayout>
 
     </android.support.v7.widget.CardView>
 

@@ -19,44 +19,34 @@
         android:layout_marginTop="210dp"
         app:cardUseCompatPadding="true">
 
-
-
         <EditText
-            android:id="@+id/etUsername"
+            android:id="@+id/etEmailId"
             android:layout_width="match_parent"
+            android:drawablePadding="10dp"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:drawableLeft="@drawable/ic_email_black_24dp"
             android:layout_marginTop="25dp"
-            android:layout_marginLeft="35dp"
-            android:inputType="textEmailAddress"
-            android:hint="Username" />
+            android:hint="Email Id"
 
-        <ImageView
-            android:id="@+id/ivEmail"
-            android:layout_width="30dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="25dp"
-            android:layout_height="40dp"
-            app:srcCompat="@drawable/users" />
+            android:inputType="textEmailAddress" />
+
+
+
+
 
 
         <EditText
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:ems="10"
-            android:layout_marginLeft="35dp"
+            android:drawablePadding="10dp"
+            android:drawableLeft="@drawable/ic_lock_black_24dp"
             android:layout_marginTop="90dp"
-            android:inputType="textPersonName"
-            android:hint="Password" />
-
-        <ImageView
-            android:id="@+id/ivPassword"
-            android:layout_width="30dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="90dp"
-            android:layout_height="40dp"
-            app:srcCompat="@drawable/lock" />
+            android:hint="Pasword"
+            android:inputType="textPassword" />
 
 
         <Button
@@ -72,28 +62,46 @@
             android:background="@drawable/rounded_button"
             android:textColor="#f8fdf9" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtForgotpwd"
-            android:layout_marginLeft="180dp"
-            android:text="FORGOT PASSWORD?"
-            android:layout_marginTop="150dp"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/txtForgotpwd"-->
+            <!--android:layout_marginLeft="180dp"-->
+            <!--android:text="FORGOT PASSWORD?"-->
+            <!--android:layout_marginTop="150dp"-->
+            <!--android:textColor="@color/colorPrimary"-->
+            <!--android:textSize="16sp"-->
+            <!--android:textStyle="bold" />-->
 
 
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtForgotpwd"
+                android:gravity="right"
+                android:layout_marginTop="150dp"
+                android:text="FORGOT PASSWORD?"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+
+
+
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/txtNotAccount"
-            android:layout_marginLeft="90dp"
+            android:gravity="center"
             android:text="Not having account?click here"
             android:layout_marginTop="250dp"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
             android:textStyle="bold" />
+
 
 
     </android.support.v7.widget.CardView>
