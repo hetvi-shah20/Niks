@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ForgotPassword" android:label="Forgot Password">  </activity>
+        <activity android:name=".ForgotPassword" android:label="Forgot Password" > </activity>
         <activity android:name=".OTPScreen" android:label="OTP" />
         <activity
             android:name=".Signup"
@@ -28,6 +28,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

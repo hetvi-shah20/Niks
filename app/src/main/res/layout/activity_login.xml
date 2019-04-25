@@ -5,106 +5,148 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFB"
     tools:context=".Login">
 
 
-    <android.support.v7.widget.CardView
+    <!--<android.support.v7.widget.CardView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--app:cardBackgroundColor="@android:color/white"-->
+    <!--app:cardCornerRadius="10dp"-->
+    <!--android:layout_margin="20dp"-->
+    <!--app:cardUseCompatPadding="true">-->
+
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        app:cardBackgroundColor="@android:color/white"
-        app:cardCornerRadius="10dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="210dp"
-        app:cardUseCompatPadding="true">
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:orientation="vertical">
+
 
         <EditText
             android:id="@+id/etEmailId"
             android:layout_width="match_parent"
-            android:drawablePadding="10dp"
             android:layout_height="wrap_content"
-            android:ems="10"
+            android:layout_marginTop="90dp"
             android:drawableLeft="@drawable/ic_email_black_24dp"
-            android:layout_marginTop="25dp"
+            android:drawablePadding="10dp"
+            android:ems="10"
             android:hint="Email Id"
-
             android:inputType="textEmailAddress" />
-
-
-
-
-
 
         <EditText
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_weight="1"
-            android:ems="10"
-            android:drawablePadding="10dp"
             android:drawableLeft="@drawable/ic_lock_black_24dp"
-            android:layout_marginTop="90dp"
+            android:drawablePadding="10dp"
+            android:ems="10"
             android:hint="Pasword"
             android:inputType="textPassword" />
 
-
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="Login"
-            android:textSize="25dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="65dp"
-            android:background="@drawable/rounded_button"
-            android:textColor="#f8fdf9" />
-
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:id="@+id/txtForgotpwd"-->
-            <!--android:layout_marginLeft="180dp"-->
-            <!--android:text="FORGOT PASSWORD?"-->
-            <!--android:layout_marginTop="150dp"-->
-            <!--android:textColor="@color/colorPrimary"-->
-            <!--android:textSize="16sp"-->
-            <!--android:textStyle="bold" />-->
-
-
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtForgotpwd"
-                android:gravity="right"
-                android:layout_marginTop="150dp"
-                android:text="FORGOT PASSWORD?"
-                android:textColor="@color/colorPrimary"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-
-
-
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtNotAccount"
-            android:gravity="center"
-            android:text="Not having account?click here"
-            android:layout_marginTop="250dp"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/txtForgotpwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="Forgot Password?"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:typeface="normal"
+                app:fontFamily="@font/amiko" />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_button"
+            android:text="Login"
+            android:textColor="#f8fdf9"
+            android:textSize="25dp"
+
+            />
+
+        <TextView
+            android:id="@+id/createaccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Create an account"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            app:fontFamily="@font/amiko" />
+
+    </LinearLayout>
 
 
+    <!--<TextView-->
+    <!--android:id="@+id/txtForgotpwd"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="30dp"-->
+    <!--android:text="Forgot Password?"-->
+    <!--android:textColor="@android:color/black"-->
+    <!--android:textSize="18sp"-->
 
-    </android.support.v7.widget.CardView>
+    <!--android:typeface="normal"-->
+    <!--app:fontFamily="@font/amiko" />-->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginRight="15dp"
+
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="7dp"
+            android:src="@drawable/line" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="OR"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            app:fontFamily="@font/amiko" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="7dp"
+            android:src="@drawable/line" />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/retecngle_button"
+        android:text="Login With Google"
+        android:textColor="#f8fdf9"
+        android:textSize="18dp" />
+
+
+    <!--</android.support.v7.widget.CardView>-->
 
 
 </LinearLayout>

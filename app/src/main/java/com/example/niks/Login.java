@@ -14,7 +14,7 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        signup =  findViewById(R.id.txtNotAccount);
+        signup =  findViewById(R.id.createaccount);
         forgotpwd =  findViewById(R.id.txtForgotpwd);
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
