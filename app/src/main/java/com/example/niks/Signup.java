@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,7 +51,7 @@ public class Signup extends AppCompatActivity {
 //                switch (v.getId())
 //                {
 //                    case R.id.btnSignup:
-                        if(checkGender())
+                        if(checkUser() && checkEmail() && checkPassword() && checkGender() && checkMobileNumber() && checkAddress() )
                         {
                           selectedGender = genderfemale.isChecked() ? "Female" : "Male";
                             sendSignupRequest();
@@ -97,11 +98,6 @@ public class Signup extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
     }
 
     private void parseJsonSignUp(String response) {
@@ -120,6 +116,84 @@ public class Signup extends AppCompatActivity {
         }
 
         return isValidGender;
+    }
+
+    private boolean checkMobileNumber()
+    {
+        boolean isMobileNumberValid = false;
+        if(mobile.getText().toString().trim().length()<= 0)
+        {
+            mobile.setError("Enter Mobile Number");
+        }else if(mobile.getText().toString().trim().length() == 10)
+        {
+            isMobileNumberValid = true;
+        }
+        else
+        {
+            mobile.setError("Enter Correct Number");
+        }
+        return isMobileNumberValid;
+    }
+
+
+    private boolean checkUser()
+    {
+        boolean isUserValid = false;
+        if(name.getText().toString().trim().length()<= 0)
+        {
+            name.setError("Enter name");
+        }
+        else
+        {
+            isUserValid = true;
+        }
+        return isUserValid;
+    }
+
+    private boolean checkPassword()
+    {
+        boolean isPasswordValid = false;
+        if(password.getText().toString().trim().length()<= 0)
+        {
+            password.setError("Enter Password");
+        }
+        else
+        {
+            isPasswordValid = true;
+        }
+        return isPasswordValid;
+    }
+
+    private boolean checkEmail()
+    {
+        boolean isEmailValid = false;
+        if(email.getText().toString().trim().length()<= 0)
+        {
+            email.setError("Enter Email id");
+        }
+        else  if(Patterns.EMAIL_ADDRESS.matcher(email.getText().toString().trim()).matches())
+        {
+            isEmailValid = true;
+        }
+        else
+        {
+            email.setError("Enter correct Email ");
+        }
+        return isEmailValid;
+    }
+
+    private boolean checkAddress()
+    {
+        boolean isAddressValid = false;
+        if(address.getText().toString().trim().length()<= 0)
+        {
+            address.setError("Enter address");
+        }
+        else
+        {
+            isAddressValid = true;
+        }
+        return isAddressValid;
     }
 
 }
