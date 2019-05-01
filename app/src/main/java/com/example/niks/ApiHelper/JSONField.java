@@ -8,6 +8,8 @@ public class JSONField {
     public static final String KEY_USER_GENDER = "user_gender";
     public static final String KEY_USER_MOBILE = "user_mobile";
     public static final String KEY_USER_ADDRESS = "user_address";
+    public static final String SUCCESS = "success";
+    public static final String USER_ARRAY = "userdata";
 
 
 }
