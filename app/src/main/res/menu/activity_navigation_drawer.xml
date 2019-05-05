@@ -10,9 +10,14 @@
             android:title="@string/menu_home" />
 
         <item
+            android:id="@+id/nav_Profile"
+            android:icon="@drawable/ic_person_black_24dp"
+            android:title="Profile" />
+
+        <item
             android:id="@+id/nav_Orders"
             android:icon="@drawable/ic_shopping_basket_black_24dp"
-            android:title="Your Orders " />
+            android:title="Order History  " />
         <item
             android:id="@+id/nav_notification"
             android:icon="@drawable/ic_notifications_black_24dp"

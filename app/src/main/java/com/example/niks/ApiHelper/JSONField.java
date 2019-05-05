@@ -11,5 +11,14 @@ public class JSONField {
     public static final String SUCCESS = "success";
     public static final String USER_ARRAY = "userdata";
 
+    public static final String KEY_OLD_PWD = "opass";
+    public static final String KEY_NEW_PWD = "npass";
+    public static final String KEY_CONFRIM_PWD= "cpass";
+    public static final java.lang.String MESSAGE = "message";
+
+
+
+
+
 
 }

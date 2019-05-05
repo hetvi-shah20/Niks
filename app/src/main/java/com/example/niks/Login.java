@@ -14,6 +14,7 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -78,6 +79,7 @@ public class Login extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+
                 error.printStackTrace();
 
             }
@@ -93,6 +95,9 @@ public class Login extends AppCompatActivity {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(Login.this);
         requestQueue.add(stringRequest);
+
+
+
     }
 
     private void parseLoginResponse(String response) {
@@ -119,7 +124,7 @@ public class Login extends AppCompatActivity {
                     userSessionManager.setLoginStatus();
                     userSessionManager.setUserDetails(userId,userName,userGender,userEmail,userPassword,userMobile,userAddress);
 
-                    Intent intent = new Intent(Login.this,Signup.class);
+                    Intent intent = new Intent(Login.this,Navigation.class);
 
                     finish();
                     startActivity(intent);

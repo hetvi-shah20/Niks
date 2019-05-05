@@ -43,4 +43,36 @@ public class UserSessionManager {
         editor.commit();
     }
 
+    public String getUserId()
+    {
+        return sharedPreferences.getString(JSONField.KEY_USER_ID,"");
+    }
+
+    public String getUserName()
+    {
+        return  sharedPreferences.getString(JSONField.KEY_USER_NAME,"");
+    }
+
+    public String getUserEmail()
+    {
+        return  sharedPreferences.getString(JSONField.KEY_USER_EMAIL,"");
+    }
+
+    public String getUserGender()
+    {
+        return  sharedPreferences.getString(JSONField.KEY_USER_GENDER,"");
+    }
+
+    public String getUserPhone()
+    {
+        return  sharedPreferences.getString(JSONField.KEY_USER_MOBILE,"");
+    }
+
+
+    public String getUserAddress()
+
+    {
+        return  sharedPreferences.getString(JSONField.KEY_USER_ADDRESS,"");
+    }
+
 }

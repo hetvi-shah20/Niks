@@ -1,5 +1,6 @@
 package com.example.niks;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -42,7 +43,7 @@ public class Navigation extends AppCompatActivity
         }
     }
 
-   
+
 
 
 
@@ -67,6 +68,16 @@ public class Navigation extends AppCompatActivity
         }else if (id == R.id.nav_Rate) {
 
         }else if (id == R.id.nav_share) {
+
+        }else if(id == R.id.nav_Profile)
+        {
+            Intent intent = new Intent(Navigation.this,Profile.class);
+            startActivity(intent);
+        }
+        else if(id == R.id.nav_settings)
+        {
+            Intent intent2 = new Intent(Navigation.this,setting.class);
+            startActivity(intent2);
 
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
