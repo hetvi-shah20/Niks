@@ -14,15 +14,25 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.TextView;
 
 public class Navigation extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    TextView yourName;
+    UserSessionManager userSessionManager ;
+    String name;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
         Toolbar toolbar = findViewById(R.id.toolbar);
+        yourName =  findViewById(R.id.YourName);
+        userSessionManager =  new UserSessionManager(Navigation.this);
+//        name =  userSessionManager.getUserName();
+//        yourName.setText(name);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -31,6 +41,7 @@ public class Navigation extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -76,7 +87,7 @@ public class Navigation extends AppCompatActivity
         }
         else if(id == R.id.nav_settings)
         {
-            Intent intent2 = new Intent(Navigation.this,setting.class);
+            Intent intent2 = new Intent(Navigation.this,Setting.class);
             startActivity(intent2);
 
         }

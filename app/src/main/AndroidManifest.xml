@@ -12,17 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Setting"></activity>
+        <activity android:name=".Setting" android:parentActivityName=".Navigation"></activity>
         <activity
             android:name=".Navigation"
-            android:label="@string/title_activity_navigation"
+            android:label="NIKS"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ChangePassword" />
-        <activity android:name=".EditProfile" />
-        <activity android:name=".Profile" />
-        <activity android:name=".ForgotPassword" />
+        <activity android:name=".ChangePassword"  android:parentActivityName=".Setting" />
+        <activity android:name=".EditProfile"  android:parentActivityName=".Setting"/>
+        <activity android:name=".Profile"  android:parentActivityName=".Navigation"/>
+        <activity android:name=".ForgotPassword" android:parentActivityName=".Navigation" />
         <activity android:name=".OTPScreen" />
-        <activity android:name=".Signup" />
+        <activity android:name=".Signup"/>
         <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
