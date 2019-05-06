@@ -34,7 +34,7 @@ public class CategoryAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         Category category=listCategory.get(i);
         String name=category.getCat_name();
-        viewHolder.tvCategory.setText(name);
+        //viewHolder.tvCategory.setText(name);
 
     }
 
