@@ -30,9 +30,7 @@ public class Navigation extends AppCompatActivity
         setContentView(R.layout.activity_navigation);
         Toolbar toolbar = findViewById(R.id.toolbar);
         yourName =  findViewById(R.id.YourName);
-        userSessionManager =  new UserSessionManager(Navigation.this);
-//        name =  userSessionManager.getUserName();
-//        yourName.setText(name);
+
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -41,7 +39,9 @@ public class Navigation extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-
+        userSessionManager =  new UserSessionManager(Navigation.this);
+//       name =  userSessionManager.getUserEmail();
+//       yourName.setText(name);
     }
 
     @Override

@@ -43,16 +43,16 @@ public class EditProfile extends AppCompatActivity {
                 sendUpdaqteRequest();
             }
         });
-        name.setHint(userSessionManager.getUserName());
-        email.setHint(userSessionManager.getUserEmail());
-        number.setHint(userSessionManager.getUserPhone());
+        name.setText(userSessionManager.getUserName());
+        email.setText(userSessionManager.getUserEmail());
+        number.setText(userSessionManager.getUserPhone());
     }
 
     private void sendUpdaqteRequest() {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, WebURL.KEY_USER_DETAILS_UPDATE, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Intent intent =  new Intent(EditProfile.this,Profile.class);
+                Intent intent =  new Intent(EditProfile.this,Setting.class);
                 finish();
                 startActivity(intent);
 

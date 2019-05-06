@@ -1,7 +1,7 @@
 package com.example.niks.ApiHelper;
 
 public class WebURL {
-    private static final String  IP_ADDRESS =  "192.168.43.217";
+    private static final String  IP_ADDRESS =  "192.168.0.101";
     private static final String KEY_MAIN_URL = "http://" + IP_ADDRESS + "/Niks/";
     public static final String KEY_SIGNUP_URL =  KEY_MAIN_URL + "signupapi.php";
     public static  final String KEY_LOGIN_URL = KEY_MAIN_URL + "loginapi.php";
