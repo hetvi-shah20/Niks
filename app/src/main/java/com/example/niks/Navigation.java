@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Navigation extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -30,7 +31,16 @@ public class Navigation extends AppCompatActivity
         setContentView(R.layout.activity_navigation);
         Toolbar toolbar = findViewById(R.id.toolbar);
         yourName =  findViewById(R.id.YourName);
-
+        userSessionManager =  new UserSessionManager(Navigation.this);
+        if(userSessionManager.getLoginStatus())
+        {
+            Toast.makeText(this, "welcome", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            Intent intent =  new Intent(Navigation.this,Login.class);
+            startActivity(intent);
+        }
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -39,7 +49,7 @@ public class Navigation extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-        userSessionManager =  new UserSessionManager(Navigation.this);
+
 //       name =  userSessionManager.getUserEmail();
 //       yourName.setText(name);
     }
@@ -73,6 +83,9 @@ public class Navigation extends AppCompatActivity
         } else if (id == R.id.nav_notification) {
 
         } else if (id == R.id.nav_Logout) {
+            userSessionManager.logout();
+            Intent intent =  new Intent(Navigation.this,Login.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_Orders) {
 
