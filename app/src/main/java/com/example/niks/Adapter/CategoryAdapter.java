@@ -13,7 +13,7 @@ import com.example.niks.R;
 
 import java.util.ArrayList;
 
-public class CategoryAdapter extends RecyclerView.Adapter {
+public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
     Context context;
     ArrayList<Category> listCategory;
 
@@ -24,25 +24,28 @@ public class CategoryAdapter extends RecyclerView.Adapter {
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-     context = viewGroup.getContext();
-     View mView= LayoutInflater.from(context).inflate(R.layout.row_griditem,viewGroup,false);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        context= viewGroup.getContext();
+        View mView=LayoutInflater.from(context).inflate(R.layout.row_griditem,viewGroup,false);
         return new ViewHolder(mView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+
         Category category=listCategory.get(i);
-        String name=category.getCat_name();
-        //viewHolder.tvCategory.setText(name);
+        String name= category.getCat_name();
+        viewHolder.tvCategory.setText(name);
+
+
 
     }
 
     @Override
     public int getItemCount() {
         return listCategory.size();
-
     }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView tvCategory;
