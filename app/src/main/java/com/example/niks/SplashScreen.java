@@ -11,9 +11,6 @@ import android.widget.ImageView;
 
 public class SplashScreen extends AppCompatActivity {
 
-    ImageView splash;
-    Animation rotate;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,28 +21,34 @@ public class SplashScreen extends AppCompatActivity {
 
         setContentView(R.layout.activity_splash_screen);
         getSupportActionBar().hide();
+        Thread thread =  new Thread()
+        {
+            public void run()
+            {
+                try
+                {
+                    sleep(2000);
 
-        splash =  findViewById(R.id.splash);
-        rotate = AnimationUtils.loadAnimation(SplashScreen.this,R.anim.rotation);
-        splash.startAnimation(rotate);
-        rotate.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
+                }catch (Exception e)
+                {
 
+                }finally {
+                    Intent intent =  new Intent(SplashScreen.this,Navigation.class);
+                    startActivity(intent);
+
+                }
             }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                finish();
-                Intent i = new Intent(SplashScreen.this,Signup.class);
-                startActivity(i);
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
+        };
+        thread.start();
     }
-}
+    protected void onPause()
+    {
+        super.onPause();
+        finish();
+    }
+
+
+
+    }
+
+
