@@ -16,6 +16,10 @@ public class JSONField {
     public static final String KEY_CONFRIM_PWD= "cpass";
     public static final java.lang.String MESSAGE = "message";
 
+    public static final String CATEGORY_ARRAY = "category";
+    public static final String CATEGORY_ID = "cat_id";
+    public static final String CATEGORY_NAME = "cat_name";
+
 
 
 

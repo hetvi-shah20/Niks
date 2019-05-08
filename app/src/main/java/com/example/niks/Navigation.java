@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -17,11 +19,30 @@ import android.view.Menu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.niks.Adapter.CategoryAdapter;
+import com.example.niks.ApiHelper.JSONField;
+import com.example.niks.ApiHelper.WebURL;
+import com.example.niks.Model.Category;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
 public class Navigation extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     TextView yourName;
     UserSessionManager userSessionManager ;
+    RecyclerView rvCategory;
+    ArrayList<Category> listCategory;
     String name;
 
 
@@ -31,6 +52,7 @@ public class Navigation extends AppCompatActivity
         setContentView(R.layout.activity_navigation);
         Toolbar toolbar = findViewById(R.id.toolbar);
         yourName =  findViewById(R.id.YourName);
+        rvCategory = findViewById(R.id.rvCategory);
         userSessionManager =  new UserSessionManager(Navigation.this);
         if(userSessionManager.getLoginStatus())
         {
@@ -41,6 +63,9 @@ public class Navigation extends AppCompatActivity
             Intent intent =  new Intent(Navigation.this,Login.class);
             startActivity(intent);
         }
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(Navigation.this,2);
+        rvCategory.setLayoutManager(gridLayoutManager);
+        getCategory();
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -53,6 +78,54 @@ public class Navigation extends AppCompatActivity
 //       name =  userSessionManager.getUserEmail();
 //       yourName.setText(name);
     }
+
+    private void getCategory() {
+        listCategory = new ArrayList<>();
+        StringRequest stringRequest =  new StringRequest(Request.Method.POST, WebURL.KEY_DISPLAY_CATEGORY, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                parseJson(response.toString());
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(Navigation.this);
+        requestQueue.add(stringRequest);
+    }
+
+    private void parseJson(String response) {
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            int flag = jsonObject.optInt(JSONField.SUCCESS);
+            if(flag == 1)
+            {
+                JSONArray jsonArray = jsonObject.optJSONArray(JSONField.CATEGORY_ARRAY);
+                if(jsonArray.length() > 0)
+                {
+                    for(int i = 0;i<jsonArray.length();i++)
+                    {
+                        JSONObject objCategory = jsonArray.optJSONObject(i);
+                        String categoryId = objCategory.getString(JSONField.CATEGORY_ID);
+                        String categoryName = objCategory.getString(JSONField.CATEGORY_NAME);
+
+                        Category category = new Category();
+                        category.setCat_id(categoryId);
+                        category.setCat_name(categoryName);
+                        listCategory.add(category);
+                    }
+                    CategoryAdapter categoryAdapter = new CategoryAdapter(Navigation.this,listCategory);
+                    rvCategory.setAdapter(categoryAdapter);
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @Override
     public void onBackPressed() {
