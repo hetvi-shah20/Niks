@@ -18,6 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -44,7 +45,7 @@ public class Navigation extends AppCompatActivity
     RecyclerView rvCategory;
     ArrayList<Category> listCategory;
     String name;
-
+    ViewFlipper viewFlipper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class Navigation extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         yourName =  findViewById(R.id.YourName);
         rvCategory = findViewById(R.id.rvCategory);
+        viewFlipper = findViewById(R.id.viewImage);
         userSessionManager =  new UserSessionManager(Navigation.this);
         if(userSessionManager.getLoginStatus())
         {
@@ -63,6 +65,8 @@ public class Navigation extends AppCompatActivity
             Intent intent =  new Intent(Navigation.this,Login.class);
             startActivity(intent);
         }
+        viewFlipper.setFlipInterval(3000);
+        viewFlipper.startFlipping();
         GridLayoutManager gridLayoutManager = new GridLayoutManager(Navigation.this,2);
         rvCategory.setLayoutManager(gridLayoutManager);
         getCategory();

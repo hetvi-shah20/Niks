@@ -1,5 +1,7 @@
 package com.example.niks;
 
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,7 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ChangePassword extends AppCompatActivity {
-    EditText etOpass,etNpass,etCpass;
+    TextInputEditText etOpass,etNpass,etCpass;
     Button reset;
     private UserSessionManager userSessionManager;
 

@@ -1,6 +1,7 @@
 package com.example.niks;
 
 import android.content.Intent;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,7 +31,7 @@ import java.util.Map;
 public class Login extends AppCompatActivity {
     TextView signup,forgotpwd;
     Button login;
-    EditText emailid,password;
+   TextInputEditText emailid,password;
     UserSessionManager userSessionManager;
 
 
