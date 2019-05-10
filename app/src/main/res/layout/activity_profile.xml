@@ -7,11 +7,19 @@
     android:orientation="vertical"
     android:gravity="center"
     tools:context=".Profile">
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
     <ImageView
         android:layout_width="match_parent"
@@ -149,5 +157,7 @@
             android:textSize="20dp"/>
 
     </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
