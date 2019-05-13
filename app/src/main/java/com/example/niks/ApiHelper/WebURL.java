@@ -8,5 +8,6 @@ public class WebURL {
     public static  final String KEY_USER_DETAILS_UPDATE = KEY_MAIN_URL + "edituserdetails.php";
     public static final String KEY_FORGOTPWD_URL = KEY_MAIN_URL + "fotgot-password-api.php";
     public static final String KEY_DISPLAY_CATEGORY = KEY_MAIN_URL + "category.php";
+    public static final String KEY_CAT_IMAGE_URL = KEY_MAIN_URL + "/upload/";
 
 }
