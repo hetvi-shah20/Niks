@@ -8,9 +8,10 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class SplashScreen extends AppCompatActivity {
-
+UserSessionManager userSessionManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +21,9 @@ public class SplashScreen extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_splash_screen);
+
+        userSessionManager=new UserSessionManager(SplashScreen.this);
+
         getSupportActionBar().hide();
         Thread thread =  new Thread()
         {
@@ -33,8 +37,19 @@ public class SplashScreen extends AppCompatActivity {
                 {
 
                 }finally {
-                    Intent intent =  new Intent(SplashScreen.this,Navigation.class);
-                    startActivity(intent);
+
+                    if(userSessionManager.getLoginStatus())
+                    {
+                        Intent intent =  new Intent(SplashScreen.this,Navigation.class);
+                        startActivity(intent);
+
+                    }
+                    else
+                    {
+                        Intent intent =  new Intent(SplashScreen.this,Login.class);
+                        startActivity(intent);
+                    }
+
 
                 }
             }

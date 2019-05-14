@@ -72,6 +72,8 @@ public class UserSessionManager {
         editor.remove(JSONField.KEY_USER_MOBILE);
         editor.remove(JSONField.KEY_USER_PASSWORD);
         editor.remove(JSONField.KEY_USER_GENDER);
+        editor.remove(JSONField.KEY_USER_ADDRESS);
+        editor.remove(IS_LOGIN);
         editor.commit();
     }
 }
