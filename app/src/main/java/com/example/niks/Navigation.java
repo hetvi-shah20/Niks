@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
@@ -54,7 +55,6 @@ public class Navigation extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         yourName =  findViewById(R.id.YourName);
         rvCategory = findViewById(R.id.rvCategory);
-        viewFlipper = findViewById(R.id.viewImage);
         userSessionManager =  new UserSessionManager(Navigation.this);
         if(userSessionManager.getLoginStatus())
         {
@@ -65,10 +65,8 @@ public class Navigation extends AppCompatActivity
             Intent intent =  new Intent(Navigation.this,Login.class);
             startActivity(intent);
         }
-        viewFlipper.setFlipInterval(3000);
-        viewFlipper.startFlipping();
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(Navigation.this,2);
-        rvCategory.setLayoutManager(gridLayoutManager);
+        LinearLayoutManager LayoutManager = new LinearLayoutManager(Navigation.this);
+        rvCategory.setLayoutManager(LayoutManager);
         getCategory();
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -115,10 +113,14 @@ public class Navigation extends AppCompatActivity
                         JSONObject objCategory = jsonArray.optJSONObject(i);
                         String categoryId = objCategory.getString(JSONField.CATEGORY_ID);
                         String categoryName = objCategory.getString(JSONField.CATEGORY_NAME);
+                        String categoryImage = objCategory.getString(JSONField.CATEGORY_IMAGE);
+
+
 
                         Category category = new Category();
                         category.setCat_id(categoryId);
                         category.setCat_name(categoryName);
+                        category.setCat_image(categoryImage);
                         listCategory.add(category);
                     }
                     CategoryAdapter categoryAdapter = new CategoryAdapter(Navigation.this,listCategory);

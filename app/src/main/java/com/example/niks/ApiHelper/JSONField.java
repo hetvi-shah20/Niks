@@ -19,6 +19,7 @@ public class JSONField {
     public static final String CATEGORY_ARRAY = "category";
     public static final String CATEGORY_ID = "cat_id";
     public static final String CATEGORY_NAME = "cat_name";
+    public static final String CATEGORY_IMAGE = "cat_image";
 
 
 

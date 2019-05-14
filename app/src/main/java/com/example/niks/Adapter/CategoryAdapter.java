@@ -6,8 +6,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.example.niks.ApiHelper.WebURL;
 import com.example.niks.Model.Category;
 import com.example.niks.R;
 
@@ -36,6 +39,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         Category category=listCategory.get(i);
         String name= category.getCat_name();
         viewHolder.tvCategory.setText(name);
+        Glide.with(context).load(WebURL.KEY_CAT_IMAGE_URL+category.getCat_image()).into(viewHolder.ivCategory);
 
 
 
@@ -49,11 +53,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView tvCategory;
+        ImageView ivCategory;
 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvCategory=(TextView)itemView.findViewById(R.id.tvCategory);
+            ivCategory = (ImageView)itemView.findViewById(R.id.ivCategory);
 
 
         }
