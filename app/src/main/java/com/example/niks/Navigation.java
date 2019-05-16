@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -30,6 +31,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.niks.Adapter.CategoryAdapter;
 import com.example.niks.ApiHelper.JSONField;
 import com.example.niks.ApiHelper.WebURL;
+import com.example.niks.Listner.CategoryItemClickListner;
 import com.example.niks.Model.Category;
 
 import org.json.JSONArray;
@@ -39,7 +41,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class Navigation extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,CategoryItemClickListner {
 
     TextView yourName;
     UserSessionManager userSessionManager ;
@@ -124,6 +126,7 @@ public class Navigation extends AppCompatActivity
                         listCategory.add(category);
                     }
                     CategoryAdapter categoryAdapter = new CategoryAdapter(Navigation.this,listCategory);
+                    categoryAdapter.setCategoryItemClickListner(Navigation.this);
                     rvCategory.setAdapter(categoryAdapter);
                 }
             }
@@ -131,7 +134,19 @@ public class Navigation extends AppCompatActivity
             e.printStackTrace();
         }
     }
+    @Override
+    public void setOnItemClicked(ArrayList<Category> listCategory, int position) {
+        Intent intent =  new Intent(Navigation.this,Subcategory.class);
+        Category category = listCategory.get(position);
+        String category_id = category.getCat_id();
+        String category_name = category.getCat_name();
+        intent.putExtra(JSONField.CATEGORY_ID,category_id);
+        intent.putExtra(JSONField.CATEGORY_NAME,category_name);
+        Log.d("id",category_id);
+        Log.d("name",category_name);
+        startActivity(intent);
 
+    }
 
     @Override
     public void onBackPressed() {
@@ -187,4 +202,7 @@ public class Navigation extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+
 }

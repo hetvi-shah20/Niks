@@ -12,26 +12,36 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Setting" android:parentActivityName=".Navigation"></activity>
+        <activity android:name=".ProductDetails"></activity>
+        <activity android:name=".Subcategory" />
+        <activity
+            android:name=".Setting"
+            android:parentActivityName=".Navigation" />
         <activity
             android:name=".Navigation"
             android:label="NIKS"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ChangePassword"  android:parentActivityName=".Setting" />
-        <activity android:name=".EditProfile"  android:parentActivityName=".Setting"/>
-        <activity android:name=".Profile"  android:parentActivityName=".Navigation"/>
-        <activity android:name=".ForgotPassword" android:parentActivityName=".Navigation" />
+        <activity
+            android:name=".ChangePassword"
+            android:parentActivityName=".Setting" />
+        <activity
+            android:name=".EditProfile"
+            android:parentActivityName=".Setting" />
+        <activity
+            android:name=".Profile"
+            android:parentActivityName=".Navigation" />
+        <activity
+            android:name=".ForgotPassword"
+            android:parentActivityName=".Navigation" />
         <activity android:name=".OTPScreen" />
-        <activity android:name=".Signup"/>
-        <activity android:name=".Login">
+        <activity android:name=".Signup" />
+        <activity android:name=".Login" />
+        <activity android:name=".SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        </activity>
-        <activity android:name=".SplashScreen" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
 

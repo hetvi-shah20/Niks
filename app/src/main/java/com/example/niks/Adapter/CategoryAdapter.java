@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.niks.ApiHelper.WebURL;
+import com.example.niks.Listner.CategoryItemClickListner;
 import com.example.niks.Model.Category;
 import com.example.niks.R;
 
@@ -19,6 +20,15 @@ import java.util.ArrayList;
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
     Context context;
     ArrayList<Category> listCategory;
+    CategoryItemClickListner categoryItemClickListner;
+
+    public CategoryItemClickListner getCategoryItemClickListner() {
+        return categoryItemClickListner;
+    }
+
+    public void setCategoryItemClickListner(CategoryItemClickListner categoryItemClickListner) {
+        this.categoryItemClickListner = categoryItemClickListner;
+    }
 
     public CategoryAdapter(Context context, ArrayList<Category> listCategory) {
         this.context = context;
@@ -34,13 +44,19 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder,final int i) {
 
         Category category=listCategory.get(i);
         String name= category.getCat_name();
         viewHolder.tvCategory.setText(name);
         Glide.with(context).load(WebURL.KEY_CAT_IMAGE_URL+category.getCat_image()).into(viewHolder.ivCategory);
-
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CategoryItemClickListner listner = getCategoryItemClickListner();
+                listner.setOnItemClicked(listCategory,i);
+            }
+        });
 
 
     }

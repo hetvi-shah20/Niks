@@ -22,6 +22,23 @@ public class JSONField {
     public static final String CATEGORY_IMAGE = "cat_image";
 
 
+    public static final String SUBCATEGORY_ARRAY = "subcategory";
+    public static final String SUBCATEGORY_ID = "subcat_id";
+    public static final String SUBCATEGORY_NAME = "subcat_name";
+    public static final String SUBCATEGORY_IMAGE = "subcat_image";
+
+
+
+    public static final String PRODUCT_ARRAY = "product";
+    public static final String PRODUCT_ID = "product_id";
+    public static final String PRODUCT_NAME = "product_name";
+    public static final String PRODUCT_WEIGHT = "product_weight";
+    public static final String PRODUCT_PRICE= "product_price";
+
+
+
+
+
 
 
 
