@@ -18,6 +18,7 @@ import com.example.niks.Adapter.ProductAdapter;
 import com.example.niks.Adapter.SubCategoryAdapter;
 import com.example.niks.ApiHelper.JSONField;
 import com.example.niks.ApiHelper.WebURL;
+import com.example.niks.Listner.ProductViewClickListner;
 import com.example.niks.Model.Product;
 import com.example.niks.Model.SubCategory;
 
@@ -29,7 +30,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ProductDetails extends AppCompatActivity {
+public class ProductDetails extends AppCompatActivity implements ProductViewClickListner {
 
     RecyclerView rvProduct;
     ArrayList<Product> listProducts;
@@ -104,11 +105,30 @@ public class ProductDetails extends AppCompatActivity {
 
                     }
                     ProductAdapter productAdapter = new ProductAdapter(ProductDetails.this,listProducts);
+                    productAdapter.setProductViewClickListner(ProductDetails.this);
                     rvProduct.setAdapter(productAdapter);
                 }
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void setOnItemProductClick(ArrayList<Product> listProduct, int position) {
+
+        Intent intent = new Intent(ProductDetails.this,IndividualProduct.class);
+        Product product = listProduct.get(position);
+        String productid = product.getProduct_id();
+        String productName = product.getProduct_name();
+        String productPrice = product.getProduct_price();
+        String productWeight = product.getProduct_weight();
+        intent.putExtra(JSONField.PRODUCT_ID,productid);
+        intent.putExtra(JSONField.PRODUCT_NAME,productName);
+        intent.putExtra(JSONField.PRODUCT_PRICE,productPrice);
+        intent.putExtra(JSONField.PRODUCT_WEIGHT,productWeight);
+
+        startActivity(intent);
+
     }
 }

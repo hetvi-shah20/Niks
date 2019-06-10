@@ -8,6 +8,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MenuInflater;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -187,6 +188,7 @@ public class Navigation extends AppCompatActivity
 
         }else if (id == R.id.nav_share) {
 
+
         }else if(id == R.id.nav_Profile)
         {
             Intent intent = new Intent(Navigation.this,Profile.class);
@@ -204,5 +206,22 @@ public class Navigation extends AppCompatActivity
     }
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.cart,menu);
+        return true;
+    }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case R.id.imageCart:
+                Intent intent = new Intent(Navigation.this,Cart.class);
+                startActivity(intent);
+        }
+        return true;
+    }
 }

@@ -6,8 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.niks.Listner.ProductViewClickListner;
 import com.example.niks.Model.Product;
 import com.example.niks.R;
 
@@ -17,6 +19,16 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
     Context context;
     ArrayList<Product> listProduct;
+
+    ProductViewClickListner productViewClickListner;
+
+    public ProductViewClickListner getProductViewClickListner() {
+        return productViewClickListner;
+    }
+
+    public void setProductViewClickListner(ProductViewClickListner productViewClickListner) {
+        this.productViewClickListner = productViewClickListner;
+    }
 
     public ProductAdapter(Context context, ArrayList<Product> listProduct) {
         this.context = context;
@@ -32,7 +44,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder,final int i) {
         Product product = listProduct.get(i);
         String name = product.getProduct_name();
         viewHolder.tvProduct.setText(name);
@@ -40,6 +52,23 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         viewHolder.tvPrice.setText(price);
         String weight = product.getProduct_weight();
         viewHolder.tvWeight.setText(weight);
+        viewHolder.btnView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ProductViewClickListner listner = getProductViewClickListner();
+                listner.setOnItemProductClick(listProduct,i);
+            }
+        });
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ProductViewClickListner listner = getProductViewClickListner();
+                listner.setOnItemProductClick(listProduct,i);
+            }
+        });
+
+
 
     }
 
@@ -52,11 +81,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     {
 
         TextView tvProduct,tvPrice,tvWeight;
+        Button btnView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvProduct = itemView.findViewById(R.id.tvProduct);
             tvPrice =itemView.findViewById(R.id.tvPrice);
             tvWeight =itemView.findViewById(R.id.tvWeight);
+            btnView = itemView.findViewById(R.id.btnView);
         }
+
     }
 }
