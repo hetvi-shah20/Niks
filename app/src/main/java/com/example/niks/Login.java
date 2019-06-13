@@ -123,7 +123,7 @@ public class Login extends AppCompatActivity {
                     String userAddress = jsonArray.optString(JSONField.KEY_USER_ADDRESS);
 
                     userSessionManager.setLoginStatus();
-                    userSessionManager.setUserDetails(userId,userName,userGender,userEmail,userPassword,userMobile,userAddress);
+                    userSessionManager.setUserDetails(userId,userName,userGender,userEmail,userMobile,userAddress);
 
                     Intent intent = new Intent(Login.this,Navigation.class);
 

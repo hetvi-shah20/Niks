@@ -117,7 +117,7 @@ public class ProductDetails extends AppCompatActivity implements ProductViewClic
     @Override
     public void setOnItemProductClick(ArrayList<Product> listProduct, int position) {
 
-        Intent intent = new Intent(ProductDetails.this,IndividualProduct.class);
+        Intent intent = new Intent(ProductDetails.this,ProductView.class);
         Product product = listProduct.get(position);
         String productid = product.getProduct_id();
         String productName = product.getProduct_name();

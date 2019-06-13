@@ -82,6 +82,15 @@ public class Navigation extends AppCompatActivity
 
 //       name =  userSessionManager.getUserEmail();
 //       yourName.setText(name);
+
+
+
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUsername = (TextView) headerView.findViewById(R.id.YourName);
+        TextView navUserEmail = (TextView) headerView.findViewById(R.id.YourEmail);
+
+        navUsername.setText(userSessionManager.getUserName());
+        navUserEmail.setText(userSessionManager.getUserEmail());
     }
 
     private void getCategory() {

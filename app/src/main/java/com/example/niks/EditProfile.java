@@ -3,9 +3,11 @@ package com.example.niks;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -16,6 +18,9 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.niks.ApiHelper.JSONField;
 import com.example.niks.ApiHelper.WebURL;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,24 +42,38 @@ public class EditProfile extends AppCompatActivity {
         number.setEnabled(false);
         update =  findViewById(R.id.btnUpdate);
         userSessionManager =  new UserSessionManager(EditProfile.this);
+         name.setText(userSessionManager.getUserName());
+        Log.d("new name",userSessionManager.getUserName());
+        email.setText(userSessionManager.getUserEmail());
+        number.setText(userSessionManager.getUserPhone());
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sendUpdaqteRequest();
+
             }
         });
-        name.setText(userSessionManager.getUserName());
-        email.setText(userSessionManager.getUserEmail());
-        number.setText(userSessionManager.getUserPhone());
+
+        newDetails();
+    }
+
+    private void newDetails() {
+
     }
 
     private void sendUpdaqteRequest() {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, WebURL.KEY_USER_DETAILS_UPDATE, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Intent intent =  new Intent(EditProfile.this,Setting.class);
-                finish();
-                startActivity(intent);
+
+//                Intent intent =  new Intent(EditProfile.this,Navigation.class);
+//                finish();
+//                startActivity(intent);
+                    parseEditProfile(response);
+//                name.setText(userSessionManager.getUserName());
+//                Log.d("new name",userSessionManager.getUserName());
+//                email.setText(userSessionManager.getUserEmail());
+//                number.setText(userSessionManager.getUserPhone());
 
             }
         }, new Response.ErrorListener() {
@@ -79,5 +98,30 @@ public class EditProfile extends AppCompatActivity {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(EditProfile.this);
         requestQueue.add(stringRequest);
+    }
+
+    private void parseEditProfile(String response) {
+
+        Log.d("RESPONSE",response);
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            int flag = jsonObject.optInt(JSONField.FLAG);
+            String message = jsonObject.optString(JSONField.MESSAGE);
+            if(flag == 1)
+            {
+                Toast.makeText(this, "Details updated successfully", Toast.LENGTH_LONG).show();
+                userSessionManager.setUserDetails(userSessionManager.getUserId(),username,userSessionManager.getUserGender(),useremail,userSessionManager.getUserPhone(),userSessionManager.getUserAddress());
+                Intent intent =  new Intent(EditProfile.this,Navigation.class);
+                finish();
+                startActivity(intent);
+
+            }
+            else
+            {
+                Toast.makeText(this,message, Toast.LENGTH_LONG).show();
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }

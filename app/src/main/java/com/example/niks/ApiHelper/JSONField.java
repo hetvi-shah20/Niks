@@ -10,10 +10,11 @@ public class JSONField {
     public static final String KEY_USER_ADDRESS = "user_address";
     public static final String SUCCESS = "success";
     public static final String USER_ARRAY = "userdata";
+    public static final String FLAG = "flag";
 
     public static final String KEY_OLD_PWD = "opass";
     public static final String KEY_NEW_PWD = "npass";
-    public static final String KEY_CONFRIM_PWD= "cpass";
+    public static final String KEY_CONFRIM_PWD = "cpass";
     public static final java.lang.String MESSAGE = "message";
 
     public static final String CATEGORY_ARRAY = "category";
@@ -28,19 +29,15 @@ public class JSONField {
     public static final String SUBCATEGORY_IMAGE = "subcat_image";
 
 
-
     public static final String PRODUCT_ARRAY = "product";
     public static final String PRODUCT_ID = "product_id";
     public static final String PRODUCT_NAME = "product_name";
     public static final String PRODUCT_WEIGHT = "product_weight";
-    public static final String PRODUCT_PRICE= "product_price";
+    public static final String PRODUCT_PRICE = "product_price";
 
-
-
-
-
-
-
+    public static final String PRODUCT_DESCRIPTION = "product_description";
+    public static final String PRODUCT_QTY = "product_qty";
+    public static final String PRODUCT_TOTAL_AMOUNT = "product_total_amount";
 
 
 }
