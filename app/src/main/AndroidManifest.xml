@@ -12,8 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".OrderDetails"></activity>
-        <activity android:name=".Cart"></activity>
+        <activity android:name=".AddAddress"></activity>
+        <activity android:name=".OrderDetails" />
+        <activity android:name=".Cart" />
         <activity android:name=".ProductView" />
         <activity android:name=".ProductDetails" />
         <activity android:name=".Subcategory" />
@@ -24,19 +25,13 @@
             android:name=".Navigation"
             android:label="NIKS"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ChangePassword" />
-        <activity
-            android:name=".EditProfile"/>
-        <activity
-            android:name=".Profile" />
-        <activity
-            android:name=".ForgotPassword" />
+        <activity android:name=".ChangePassword" />
+        <activity android:name=".EditProfile" />
+        <activity android:name=".Profile" />
+        <activity android:name=".ForgotPassword" />
         <activity android:name=".OTPScreen" />
-        <activity
-            android:name=".Signup" />
-        <activity
-            android:name=".Login" />
+        <activity android:name=".Signup" />
+        <activity android:name=".Login" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

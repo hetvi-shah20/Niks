@@ -21,8 +21,10 @@
             <ImageView
                 android:id="@+id/product_image"
                 android:layout_width="fill_parent"
-                android:layout_height="180dp"
+                android:layout_height="200dp"
                 android:layout_margin="10dp" />
+
+
 
             <TextView
                 android:id="@+id/product_name"
@@ -31,6 +33,9 @@
                 android:layout_margin="10dp"
                 android:padding="5dp"
                 android:text="Name"
+                android:fontFamily="@font/amiko"
+                android:drawablePadding="15dp"
+                android:drawableTop="@drawable/ic_lens_black_24dp"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18dp"
                 android:textStyle="bold" />
@@ -46,6 +51,7 @@
                     android:layout_marginTop="10dp"
                     android:padding="5dp"
                     android:text="Price : "
+                    android:fontFamily="@font/amiko"
                     android:textColor="@android:color/black"
                     android:textSize="18dp"
                     android:textStyle="normal" />
@@ -56,6 +62,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:padding="5dp"
+                    android:fontFamily="@font/amiko"
                     android:textColor="@android:color/black"
                     android:textSize="16dp"
                     android:textStyle="bold" />
@@ -72,6 +79,7 @@
                     android:layout_marginTop="10dp"
                     android:padding="5dp"
                     android:text="Weight : "
+                    android:fontFamily="@font/amiko"
                     android:textColor="@android:color/black"
                     android:textSize="18dp"
                     android:textStyle="normal" />
@@ -82,6 +90,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:padding="5dp"
+                    android:fontFamily="@font/amiko"
                     android:textColor="@android:color/black"
                     android:textSize="16dp"
                     android:textStyle="bold" />
@@ -96,7 +105,7 @@
 
                 <EditText
                     android:id="@+id/etQty"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
@@ -108,24 +117,12 @@
                     android:layout_marginLeft="10dp"
                     android:maxLength="3"
                     android:inputType="number"
+                    android:fontFamily="@font/amiko"
                     android:digits="0123456789"
                     android:textSize="17dp"
                     android:textColor="@android:color/black"
                     android:textColorHint="@android:color/black"/>
 
-                <Button
-                    android:id="@+id/btnAddtoCard"
-                    android:layout_width="140dp"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/rounded_button"
-                    android:text="Add"
-                    android:textColor="@android:color/black"
-                    android:textSize="16dp"
-                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -140,6 +137,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:padding="5dp"
+                    android:fontFamily="@font/amiko"
                     android:text="Description : "
                     android:textColor="@android:color/black"
                     android:textSize="18dp"
@@ -148,12 +146,29 @@
                 <TextView
                     android:id="@+id/product_description"
                     android:layout_width="match_parent"
+                    android:fontFamily="@font/amiko"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:padding="5dp"
                     android:textColor="@android:color/black"
                     android:textSize="16dp"
                     android:textStyle="normal" />
+
+
+                <Button
+                    android:id="@+id/btnAddtoCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:layout_marginTop="55dp"
+                    android:text="Add"
+                    android:fontFamily="@font/amiko"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

@@ -1,7 +1,23 @@
 package com.example.niks.Model;
 
 public class Product {
-    String product_id,product_name,product_price,product_weight,subcat_id;
+    String product_id,product_name,product_price,product_weight,subcat_id,product_description,product_image;
+
+    public String getProduct_image() {
+        return product_image;
+    }
+
+    public void setProduct_image(String product_image) {
+        this.product_image = product_image;
+    }
+
+    public String getProduct_description() {
+        return product_description;
+    }
+
+    public void setProduct_description(String product_description) {
+        this.product_description = product_description;
+    }
 
     public String getProduct_id() {
         return product_id;

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.LinearLayout;
 
 import com.android.volley.AuthFailureError;
@@ -93,13 +94,16 @@ public class ProductDetails extends AppCompatActivity implements ProductViewClic
                         String productname = jsonSubCategory.getString(JSONField.PRODUCT_NAME);
                         String productprice = jsonSubCategory.getString(JSONField.PRODUCT_PRICE);
                         String productweight = jsonSubCategory.getString(JSONField.PRODUCT_WEIGHT);
+                        String productDescription = jsonSubCategory.getString(JSONField.PRODUCT_DESCREPTION);
+                        String productImage = jsonSubCategory.getString(JSONField.PRODUCT_IMAGE);
 
                         Product product = new Product();
                         product.setProduct_id(productid);
                         product.setProduct_name(productname);
                         product.setProduct_price(productprice);
                         product.setProduct_weight(productweight);
-
+                        product.setProduct_description(productDescription);
+                        product.setProduct_image(productImage);
                         listProducts.add(product);
 
 
@@ -123,10 +127,16 @@ public class ProductDetails extends AppCompatActivity implements ProductViewClic
         String productName = product.getProduct_name();
         String productPrice = product.getProduct_price();
         String productWeight = product.getProduct_weight();
+        String ProductDescription = product.getProduct_description();
+        String ProductImage = WebURL.KEY_SUBCAT_IMAGE_URL + product.getProduct_image();
+
         intent.putExtra(JSONField.PRODUCT_ID,productid);
         intent.putExtra(JSONField.PRODUCT_NAME,productName);
         intent.putExtra(JSONField.PRODUCT_PRICE,productPrice);
         intent.putExtra(JSONField.PRODUCT_WEIGHT,productWeight);
+        Log.d("description",ProductDescription);
+        intent.putExtra(JSONField.PRODUCT_DESCREPTION,ProductDescription);
+        intent.putExtra(JSONField.PRODUCT_IMAGE,ProductImage);
 
         startActivity(intent);
 
