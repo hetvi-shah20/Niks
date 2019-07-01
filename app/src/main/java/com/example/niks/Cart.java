@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -68,6 +69,7 @@ public class Cart extends AppCompatActivity {
             public void onClick(View v) {
                 if (checkAmount()) {
                     generateJSON();
+
                 }
             }
         });
@@ -92,7 +94,7 @@ public class Cart extends AppCompatActivity {
                 }
                 jsonProduct.put(JSONField.DETAILS_ARRAY, jsonArray);
                 Log.d("JSON", jsonProduct.toString());
-                Intent intent = new Intent(Cart.this, AddAddress.class);
+                Intent intent = new Intent(Cart.this, PlaceOrderActivity.class);
                 intent.putExtra(JSONField.DETAILS_ARRAY,jsonProduct.toString());
                 intent.putExtra(JSONField.TOTAL_AMOUNT,totalAmount);
                 startActivity(intent);
@@ -173,7 +175,7 @@ public class Cart extends AppCompatActivity {
                             String cart_id = productObject.optString(JSONField.CART_ID);
                             String product_id = productObject.optString(JSONField.PRODUCT_ID);
                             String product_name = productObject.optString(JSONField.PRODUCT_NAME);
-                            String product_image = productObject.optString(WebURL.KEY_SUBCAT_IMAGE_URL + cart.getProduct_image());
+                            String product_image = productObject.optString(JSONField.PRODUCT_IMAGE);
                             String product_quantity = productObject.optString(JSONField.PRODUCT_QTY);
                             String product_details = productObject.optString(JSONField.PRODUCT_DESCREPTION);
                             String product_amount = productObject.optString(JSONField.PRODUCT_AMOUNT);
@@ -182,7 +184,7 @@ public class Cart extends AppCompatActivity {
 
 
                             cart.setCart_id(cart_id);
-                            cart.setCart_id(product_id);
+                            cart.setProduct_id(product_id);
                             cart.setProduct_name(product_name);
                             cart.setProduct_image(product_image);
                             cart.setProduct_qty(product_quantity);

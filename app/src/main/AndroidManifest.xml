@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AddAddress"></activity>
+        <activity android:name=".PlaceOrderActivity"></activity>
+        <activity android:name=".AddAddress" />
         <activity android:name=".OrderDetails" />
         <activity android:name=".Cart" />
         <activity android:name=".ProductView" />

@@ -2,7 +2,7 @@ package com.example.niks.Model;
 
 public class Cart {
 
-    String cart_id,product_id,product_name,product_description,product_image,product_qty,product_unit_price,product_amount,product_weigth;
+    String cart_id,product_id,product_name,product_description,product_image,product_qty,product_unit_price,product_amount,product_weigth,total_cart_items;
 
     public Cart(String cart_id, String product_id, String product_name, String product_description, String product_image, String product_qty, String product_unit_price, String product_amount, String product_weigth) {
         this.cart_id = cart_id;
@@ -14,6 +14,14 @@ public class Cart {
         this.product_unit_price = product_unit_price;
         this.product_amount = product_amount;
         this.product_weigth = product_weigth;
+    }
+
+    public String getTotal_cart_items() {
+        return total_cart_items;
+    }
+
+    public void setTotal_cart_items(String total_cart_items) {
+        this.total_cart_items = total_cart_items;
     }
 
     public Cart() {

@@ -1,6 +1,7 @@
 package com.example.niks;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -23,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -34,12 +36,16 @@ import com.example.niks.ApiHelper.JSONField;
 import com.example.niks.ApiHelper.WebURL;
 import com.example.niks.Listner.CategoryItemClickListner;
 import com.example.niks.Model.Category;
+import com.nex3z.notificationbadge.NotificationBadge;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Navigation extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,CategoryItemClickListner {
@@ -50,6 +56,9 @@ public class Navigation extends AppCompatActivity
     ArrayList<Category> listCategory;
     String name;
     ViewFlipper viewFlipper;
+    NotificationBadge badge ;
+    com.example.niks.Model.Cart cart =  new com.example.niks.Model.Cart();
+    ArrayList<com.example.niks.Model.Cart> listCart = new ArrayList<com.example.niks.Model.Cart>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +67,7 @@ public class Navigation extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         yourName =  findViewById(R.id.YourName);
         rvCategory = findViewById(R.id.rvCategory);
+        badge = findViewById(R.id.badge);
         userSessionManager =  new UserSessionManager(Navigation.this);
         if(userSessionManager.getLoginStatus())
         {
@@ -68,6 +78,8 @@ public class Navigation extends AppCompatActivity
             Intent intent =  new Intent(Navigation.this,Login.class);
             startActivity(intent);
         }
+
+
         LinearLayoutManager LayoutManager = new LinearLayoutManager(Navigation.this);
         rvCategory.setLayoutManager(LayoutManager);
         getCategory();
@@ -91,7 +103,98 @@ public class Navigation extends AppCompatActivity
 
         navUsername.setText(userSessionManager.getUserName());
         navUserEmail.setText(userSessionManager.getUserEmail());
+        getCartRVData();
+       // badge.setText(cart.getTotal_cart_items());
     }
+    private void getCartRVData() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, WebURL.VIEW_CART_URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                parseUpdateCartResponse(response);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put(JSONField.KEY_USER_ID,userSessionManager.getUserId());
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+    private void parseUpdateCartResponse(String response) {
+
+        Log.d("TAG", "parseSubCategoryResponse: " + response);
+        try {
+            JSONObject jsonObject =new JSONObject(response);
+            if(jsonObject.has(JSONField.FLAG))
+            {
+                int flag =jsonObject.optInt(JSONField.FLAG);
+                String message =jsonObject.optString(JSONField.MESSAGE);
+                if(flag == 1)
+                {
+                    JSONArray jsonArray =jsonObject.optJSONArray(JSONField.CART_ARRAY);
+                    if(jsonArray.length() > 0)
+                    {
+                        for(int i = 0;i<jsonArray.length();i++)
+
+                        {
+
+                            JSONObject productObject = jsonArray.optJSONObject(i);
+                            String cart_id = productObject.optString(JSONField.CART_ID);
+                            String product_id = productObject.optString(JSONField.PRODUCT_ID);
+                            String product_name = productObject.optString(JSONField.PRODUCT_NAME);
+                            String product_image = productObject.optString(JSONField.PRODUCT_IMAGE);
+                            String product_quantity = productObject.optString(JSONField.PRODUCT_QTY);
+                            String product_details = productObject.optString(JSONField.PRODUCT_DESCREPTION);
+                            String product_amount = productObject.optString(JSONField.PRODUCT_AMOUNT);
+                            String product_price = productObject.optString(JSONField.PRODUCT_UNIT_PRICE);
+                            String product_weight = productObject.optString(JSONField.PRODUCT_WEIGHT);
+                            String total_items = productObject.optString(JSONField.TOTAL_CART_ITEMS);
+
+                            cart.setCart_id(cart_id);
+                            cart.setProduct_name(product_name);
+                            cart.setProduct_image(product_image);
+                            cart.setProduct_qty(product_quantity);
+                            cart.setProduct_description(product_details);
+                            cart.setProduct_unit_price(product_price);
+                            cart.setProduct_amount(product_amount);
+                            cart.setProduct_weigth(product_weight);
+                            cart.setTotal_cart_items(total_items);
+                            listCart.add(cart);
+                            Log.d("items",total_items);
+
+
+
+                        }
+
+
+
+
+
+
+
+                    }
+
+
+                }
+            }
+
+          //  badge.setText(cart.getTotal_cart_items());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
 
     private void getCategory() {
         listCategory = new ArrayList<>();

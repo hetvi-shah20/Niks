@@ -152,19 +152,19 @@ public class ProductView extends AppCompatActivity {
 
                             etQty.setText(product_quantity);
                             Log.d("Value of Quantity", product_quantity);
-                            btnAddtoCard.setTag("UPDATE");
-                            btnAddtoCard.setText("UPDATE");
+                            btnAddtoCard.setTag("Go To Cart");
+                            btnAddtoCard.setText("Go To Cart");
                             btnAddtoCard.setVisibility(View.VISIBLE);
                         }
                     }
                 } else if (flag == 0 && Message.equals("No Record Found.")) {
                     etQty.setText("");
-                    btnAddtoCard.setText("ADD");
+                    btnAddtoCard.setText("ADD To cart");
                     btnAddtoCard.setTag("INSERT");
                 } else {
 
                     etQty.setText("");
-                    btnAddtoCard.setText("ADD");
+                    btnAddtoCard.setText("ADD To cart");
                     btnAddtoCard.setVisibility(View.GONE);
                 }
             }

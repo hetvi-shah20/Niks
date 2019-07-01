@@ -43,6 +43,7 @@ public class JSONField {
     public static final String PRODUCT_AMOUNT = "product_amount";
     public static final String PRODUCT_UNIT_PRICE = "product_unit_price";
     public static final String PRODUCT_QTY = "product_qty";
+    public static final String TOTAL_CART_ITEMS = "cart_items";
 
     public static final String PRICE = "price";
     public static final String QTY = "quantity";
