@@ -34,7 +34,7 @@ import java.util.Map;
 public class PlaceOrderActivity extends AppCompatActivity {
     RecyclerView rvPlaceOrder;
     ArrayList<Cart>  cartArrayList =  new ArrayList<>();
-    private PlaceOrderAdapter PlaceOrderAdapter;
+    private PlaceOrderAdapter placeOrderAdapter;
     UserSessionManager userSessionManager;
 
     @Override
@@ -43,11 +43,11 @@ public class PlaceOrderActivity extends AppCompatActivity {
         setContentView(R.layout.activity_place_order);
         userSessionManager = new UserSessionManager(this);
         rvPlaceOrder = findViewById(R.id.rvOrderItems);
-        PlaceOrderAdapter =  new PlaceOrderAdapter(this,cartArrayList);
+       // placeOrderAdapter =  new PlaceOrderAdapter(this,cartArrayList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         rvPlaceOrder.setLayoutManager(mLayoutManager);
         rvPlaceOrder.setItemAnimator(new DefaultItemAnimator());
-        rvPlaceOrder.setAdapter(PlaceOrderAdapter);
+
 
         getCartItems();
     }
@@ -131,6 +131,8 @@ public class PlaceOrderActivity extends AppCompatActivity {
                     }
 
                 }
+                placeOrderAdapter =  new PlaceOrderAdapter(this,cartArrayList);
+                rvPlaceOrder.setAdapter(placeOrderAdapter);
             }
         } catch (JSONException e) {
             e.printStackTrace();
