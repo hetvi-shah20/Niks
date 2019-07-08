@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -33,6 +34,7 @@ public class Login extends AppCompatActivity {
     Button login;
    TextInputEditText emailid,password;
     UserSessionManager userSessionManager;
+    Toolbar toolbar;
 
 
     @Override
@@ -46,6 +48,17 @@ public class Login extends AppCompatActivity {
         login =  findViewById(R.id.btnLogin);
         emailid =  findViewById(R.id.etEmailId);
         password = findViewById(R.id.etPassword);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("Login");
+        setTitle("");
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

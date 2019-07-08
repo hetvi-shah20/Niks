@@ -3,6 +3,7 @@ package com.example.niks;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
@@ -32,6 +33,7 @@ public class Signup extends AppCompatActivity {
     RadioButton gendermale,genderfemale;
     Button submit;
     private String selectedGender;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,17 @@ public class Signup extends AppCompatActivity {
         gendermale =  findViewById(R.id.male);
         genderfemale = findViewById(R.id.female);
         submit =  findViewById(R.id.btnSignup);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("Sign Up");
+        setTitle("");
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

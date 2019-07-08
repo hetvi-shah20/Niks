@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:gravity="center"
+    android:id="@+id/ll_empty_state"
+    android:visibility="gone">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:src="@drawable/ic_empty_box"/>
+
+    <TextView
+        android:id="@+id/tvErrorTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:text="Oops!"
+        android:layout_marginTop="20dp"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/tvEmptyStateMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="17sp"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
+        android:text=""
+        android:gravity="center"
+        android:fontFamily="sans-serif-light"
+        android:layout_margin="10dp"/>
+
+
+</LinearLayout>

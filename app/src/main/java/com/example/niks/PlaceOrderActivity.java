@@ -1,13 +1,18 @@
 package com.example.niks;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -36,6 +41,16 @@ public class PlaceOrderActivity extends AppCompatActivity {
     ArrayList<Cart>  cartArrayList =  new ArrayList<>();
     private PlaceOrderAdapter placeOrderAdapter;
     UserSessionManager userSessionManager;
+    TextView tvSelectAddress,tvTotalItems,tvTotalAmount,deliveryAddress;
+    Toolbar  toolbar;
+    JSONObject jsonProduct;
+    LinearLayout lldeliveyAddress,llselectAddress;
+    String totalitems,totalamounts;
+    String shipid,shipflatno,shipStreet,shipLandmark,shipArea,ShipCity,ShipPincode;
+    public static final String main_key = "my_pref";
+    public static final String item_key = "itemKey";
+    public static final String amount_key = "amountKey";
+    SharedPreferences sharedPreferences ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +58,41 @@ public class PlaceOrderActivity extends AppCompatActivity {
         setContentView(R.layout.activity_place_order);
         userSessionManager = new UserSessionManager(this);
         rvPlaceOrder = findViewById(R.id.rvOrderItems);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        tvSelectAddress = findViewById(R.id.tvSelectAddress);
+        tvTotalItems = findViewById(R.id.tvTotalItems);
+        tvTotalAmount = findViewById(R.id.tvTotalAmount);
+        lldeliveyAddress = findViewById(R.id.llDeliveryAddress);
+        llselectAddress =  findViewById(R.id.selectAddress);
+        deliveryAddress = findViewById(R.id.deliveryAddress);
+
+
+
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("Place Order");
+        setTitle("");
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+
+        final Intent intent = getIntent();
+        totalitems = intent.getStringExtra(JSONField.TOTAL_CART_ITEMS);
+        totalamounts = intent.getStringExtra(JSONField.TOTAL_AMOUNT);
+        tvTotalItems.setText(totalitems);
+        tvTotalAmount.setText("₹"+totalamounts);
+
+
+        sharedPreferences = getSharedPreferences(main_key,MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(item_key,totalitems);
+        editor.putString(amount_key,totalamounts);
+        editor.commit();
+
        // placeOrderAdapter =  new PlaceOrderAdapter(this,cartArrayList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         rvPlaceOrder.setLayoutManager(mLayoutManager);
@@ -50,6 +100,15 @@ public class PlaceOrderActivity extends AppCompatActivity {
 
 
         getCartItems();
+        tvSelectAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PlaceOrderActivity.this,MyAddressActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     private void getCartItems() {
@@ -137,5 +196,49 @@ public class PlaceOrderActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (getIntent().hasExtra(JSONField.SHIPPING_ID)) {
+           deliveryAddress();
+        }
+    }
+
+
+
+    private void deliveryAddress() {
+        Intent intent1 = getIntent();
+        shipid = intent1.getStringExtra(JSONField.SHIPPING_ID);
+        shipflatno = intent1.getStringExtra(JSONField.SHIPPING_FLATNO);
+        shipArea = intent1.getStringExtra(JSONField.SHIPPING_AREA);
+        shipLandmark = intent1.getStringExtra(JSONField.SHIPPING_LANDMARK);
+        shipStreet = intent1.getStringExtra(JSONField.SHIPPING_STREET);
+        ShipCity = intent1.getStringExtra(JSONField.SHIPPING_CITY);
+        ShipPincode = intent1.getStringExtra(JSONField.SHIPPING_PINCODE);
+        Log.d("pincode",ShipPincode);
+
+
+        lldeliveyAddress.setVisibility(View.VISIBLE);
+        String Address = " " +shipflatno + "," + shipStreet +"\n"+ " " + shipLandmark +"\n" + " " + shipArea +"\n" +" " + ShipCity + " " + "-" + ShipPincode ;
+        Log.d("full Address",Address);
+        deliveryAddress.setText(Address);
+
+
+        SharedPreferences sharedPreferences2 = getSharedPreferences(main_key,MODE_PRIVATE);
+        String prefAmount = sharedPreferences2.getString(amount_key,"");
+        String preItems = sharedPreferences2.getString(item_key,"");
+        Log.d("preAmount ",prefAmount);
+
+
+
+        final Intent intent = getIntent();
+        totalitems = intent.getStringExtra(JSONField.TOTAL_CART_ITEMS);
+        totalamounts = intent.getStringExtra(JSONField.TOTAL_AMOUNT);
+
+        tvTotalItems.setText(totalitems);
+        tvTotalAmount.setText("₹"+totalamounts);
+
     }
 }

@@ -12,28 +12,61 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
-        <activity android:name=".PlaceOrderActivity"></activity>
-        <activity android:name=".AddAddress" />
-        <activity android:name=".OrderDetails" />
-        <activity android:name=".Cart" />
-        <activity android:name=".ProductView" />
-        <activity android:name=".ProductDetails" />
-        <activity android:name=".Subcategory" />
+        <activity android:name=".OrderHistoryActivity"></activity>
+        <activity
+            android:name=".MyAddressActivity"
+            android:theme="@style/noactionbar" />
+        <activity android:name=".OrderDetailsActivity" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <activity
+            android:name=".PlaceOrderActivity"
+            android:theme="@style/noactionbar" />
+        <activity
+            android:name=".Cart"
+            android:theme="@style/noactionbar" />
+        <activity
+            android:name=".ProductView"
+            android:theme="@style/noactionbar" />
+        <activity
+            android:name=".ProductDetails"
+            android:theme="@style/noactionbar" />
+        <activity
+            android:name=".Subcategory"
+            android:theme="@style/noactionbar" />
+        <activity
+            android:name=".AddAddressActivity"
+            android:theme="@style/noactionbar" />
         <activity
             android:name=".Setting"
-            android:parentActivityName=".Navigation" />
+            android:theme="@style/noactionbar" />
         <activity
             android:name=".Navigation"
-            android:label="NIKS"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ChangePassword" />
-        <activity android:name=".EditProfile" />
-        <activity android:name=".Profile" />
-        <activity android:name=".ForgotPassword" />
-        <activity android:name=".OTPScreen" />
-        <activity android:name=".Signup" />
-        <activity android:name=".Login" />
+            android:theme="@style/noactionbar" />
+        <activity
+            android:name=".ChangePassword"
+            android:theme="@style/noactionbar" />
+        <activity
+            android:name=".EditProfile"
+            android:theme="@style/noactionbar" />
+        <activity
+            android:name=".Profile"
+            android:theme="@style/noactionbar" />
+        <activity
+            android:name=".ForgotPassword"
+            android:theme="@style/noactionbar" />
+        <activity
+            android:name=".OTPScreen"
+            android:theme="@style/noactionbar" />
+        <activity
+            android:name=".Signup"
+            android:theme="@style/noactionbar" />
+        <activity
+            android:name=".Login"
+            android:theme="@style/noactionbar" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

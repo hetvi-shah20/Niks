@@ -57,6 +57,7 @@ public class Navigation extends AppCompatActivity
     String name;
     ViewFlipper viewFlipper;
     NotificationBadge badge ;
+    Toolbar toolbar;
     com.example.niks.Model.Cart cart =  new com.example.niks.Model.Cart();
     ArrayList<com.example.niks.Model.Cart> listCart = new ArrayList<com.example.niks.Model.Cart>();
 
@@ -68,6 +69,18 @@ public class Navigation extends AppCompatActivity
         yourName =  findViewById(R.id.YourName);
         rvCategory = findViewById(R.id.rvCategory);
         badge = findViewById(R.id.badge);
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("Niks");
+        setTitle("");
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         userSessionManager =  new UserSessionManager(Navigation.this);
         if(userSessionManager.getLoginStatus())
         {

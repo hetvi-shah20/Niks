@@ -1,6 +1,7 @@
 package com.example.niks;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -55,9 +56,6 @@ public class ProductView extends AppCompatActivity {
         btnAddtoCard =  findViewById(R.id.btnAddtoCard);
         product_image = findViewById(R.id.product_image);
 
-      //  toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-
 
         final Intent intent = getIntent();
         ProductID = intent.getStringExtra(JSONField.PRODUCT_ID);
@@ -67,14 +65,17 @@ public class ProductView extends AppCompatActivity {
         ProductDescription =intent.getStringExtra(JSONField.PRODUCT_DESCREPTION);
         ProductImage = intent.getStringExtra(JSONField.PRODUCT_IMAGE);
 
-//        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
-//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                onBackPressed();
-//            }
-//        });
-
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("Product Details");
+        setTitle("");
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         prdname.setText(ProductName);
         //prdprice.setText(pprice);
 

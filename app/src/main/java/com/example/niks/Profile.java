@@ -3,9 +3,11 @@ package com.example.niks;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.niks.R.menu;
@@ -13,6 +15,7 @@ import com.example.niks.R.menu;
 public class Profile extends AppCompatActivity {
     TextView name,email,number,address,ename;
     UserSessionManager userSessionManager;
+    Toolbar toolbar;
 
 
     @Override
@@ -25,6 +28,17 @@ public class Profile extends AppCompatActivity {
         number = findViewById(R.id.tvNumber);
         address = findViewById(R.id.tvAddress);
         userSessionManager =  new UserSessionManager(Profile.this);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("Profile");
+        setTitle("");
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         display();
     }
 

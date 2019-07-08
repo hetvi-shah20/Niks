@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -45,7 +46,9 @@ public class Cart extends AppCompatActivity {
     LinearLayout llCart,ll_amount;
     String totalAmount;
     JSONObject jsonProduct;
-
+    Toolbar toolbar;
+    String totalitems;
+    JSONObject productObject;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +59,19 @@ public class Cart extends AppCompatActivity {
         tv_cart_amount = findViewById(R.id.tv_cart_amount);
         tvCheckout = findViewById(R.id.tvCheckout);
         rvCart = findViewById(R.id.rv_cart_product);
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("My Cart");
+        setTitle("");
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
         cartAdapter = new CartAdapter(this,listCart);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         rvCart.setLayoutManager(mLayoutManager);
@@ -95,8 +111,12 @@ public class Cart extends AppCompatActivity {
                 jsonProduct.put(JSONField.DETAILS_ARRAY, jsonArray);
                 Log.d("JSON", jsonProduct.toString());
                 Intent intent = new Intent(Cart.this, PlaceOrderActivity.class);
+                totalitems = productObject.optString(JSONField.TOTAL_CART_ITEMS);
                 intent.putExtra(JSONField.DETAILS_ARRAY,jsonProduct.toString());
                 intent.putExtra(JSONField.TOTAL_AMOUNT,totalAmount);
+                intent.putExtra(JSONField.TOTAL_CART_ITEMS,totalitems);
+                Log.d("total amount",totalAmount);
+                Log.d("total items",totalitems);
                 startActivity(intent);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -171,7 +191,7 @@ public class Cart extends AppCompatActivity {
 
                         {
                             com.example.niks.Model.Cart cart =  new com.example.niks.Model.Cart();
-                            JSONObject productObject = jsonArray.optJSONObject(i);
+                            productObject = jsonArray.optJSONObject(i);
                             String cart_id = productObject.optString(JSONField.CART_ID);
                             String product_id = productObject.optString(JSONField.PRODUCT_ID);
                             String product_name = productObject.optString(JSONField.PRODUCT_NAME);
@@ -193,6 +213,9 @@ public class Cart extends AppCompatActivity {
                             cart.setProduct_amount(product_amount);
                             cart.setProduct_weigth(product_weight);
                             listCart.add(cart);
+
+
+
 
 
                         }

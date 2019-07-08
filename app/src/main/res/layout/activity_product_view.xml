@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".ProductView">
 
-
+    <include layout="@layout/custom_toolbar" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

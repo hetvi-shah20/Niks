@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -32,6 +34,7 @@ public class Subcategory extends AppCompatActivity implements SubCategoryItemCli
     ArrayList<SubCategory> listSubCategory;
     private String id;
     private String name;
+    Toolbar  toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,18 @@ public class Subcategory extends AppCompatActivity implements SubCategoryItemCli
         Intent intent = getIntent();
         id = intent.getStringExtra(JSONField.CATEGORY_ID);
         name = intent.getStringExtra(JSONField.CATEGORY_NAME);
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("Category");
+        setTitle("");
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         GridLayoutManager gridLayoutManager= new GridLayoutManager(Subcategory.this,2);
         rvSubCategory.setLayoutManager(gridLayoutManager);

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Navigation"
     android:orientation="vertical"
     android:background="#eee9e9"
-    tools:showIn="@layout/app_bar_navigation">
+    tools:context=".MyAddressActivity">
+
+    <include layout="@layout/custom_toolbar" />
 
 
     <ScrollView
@@ -20,11 +21,12 @@
 
             android:orientation="vertical">
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/rvCategory"
+                android:id="@+id/rvAddress"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:gravity="center"></android.support.v7.widget.RecyclerView>
         </LinearLayout>
     </ScrollView>
+
 </LinearLayout>

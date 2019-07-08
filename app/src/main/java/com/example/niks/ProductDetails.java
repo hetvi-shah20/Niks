@@ -5,7 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import com.android.volley.AuthFailureError;
@@ -37,6 +39,7 @@ public class ProductDetails extends AppCompatActivity implements ProductViewClic
     ArrayList<Product> listProducts;
     private String id;
     private String name;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,17 @@ public class ProductDetails extends AppCompatActivity implements ProductViewClic
         Intent intent =  getIntent();
         id  =  intent.getStringExtra(JSONField.SUBCATEGORY_ID);
         name = intent.getStringExtra(JSONField.SUBCATEGORY_NAME);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("Products");
+        setTitle("");
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ProductDetails.this);
         rvProduct.setLayoutManager(linearLayoutManager);

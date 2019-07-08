@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:gravity="center"
+    android:id="@+id/ll_no_items_in_cart"
+    android:visibility="gone">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:src="@drawable/ic_shopping_cart_empty_side_view"/>
+
+    <TextView
+        android:id="@+id/tvErrorTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:text="Oops!"
+        android:layout_marginTop="20dp"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/tvEmptyStateMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="17sp"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
+        android:text="No items are available in your cart . Add New Items to your cart !"
+        android:gravity="center"
+        android:fontFamily="sans-serif-light"/>
+
+    <Button
+        android:id="@+id/btnStartShopping"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/rounded_button"
+        android:clickable="true"
+        android:elevation="10dp"
+        android:gravity="center"
+        android:text="Start Shopping"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+</LinearLayout>

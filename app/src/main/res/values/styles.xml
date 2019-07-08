@@ -14,8 +14,19 @@
     </style>
 
     <style name="noactionbar" parent="Theme.AppCompat.Light.NoActionBar" />
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" >
+
+
+    </style>
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="toolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar" >
+
+        <item name="android:fontFamily">@font/amiko</item>
+    </style>
+
+
+
 
 </resources>

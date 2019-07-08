@@ -13,8 +13,10 @@
     app:contentInsetStartWithNavigation="0dp"
     app:popupTheme="@style/AppTheme.PopupOverlay"
     app:title="Demo"
-    app:titleMarginStart="0dp"
+    app:titleMarginStart="10dp"
     app:titleTextAppearance="@style/TextAppearance.AppCompat.Large"
     app:titleTextColor="@android:color/black"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+    android:theme="@style/toolbar">
+
+
 </android.support.v7.widget.Toolbar>

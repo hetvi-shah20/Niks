@@ -50,9 +50,15 @@ public class JSONField {
     public static final String ORDER_DETAILS = "order_details";
     public static final String SHPPPING_NAME = "shipping_name";
     public static final String SHIPPING_MOBILE = "shipping_mobile";
-    public static final String SHIPPING_ADDRESS = "shipping_address";
+    public static final String SHIPPING_ID = "shipping_id";
+    public static final String SHIPPING_FLATNO = "shipping_flatno";
+    public static final String SHIPPING_STREET = "shipping_street";
+    public static final String SHIPPING_LANDMARK = "shipping_landmark";
+    public static final String SHIPPING_AREA = "shipping_area";
+    public static final String SHIPPING_CITY = "shipping_city";
+    public static final String SHIPPING_PINCODE = "shipping_pincode";
     public static final String TOTAL_AMOUNT = "total_amount";
-
+    public static final String SHIPPING_ARRAY = "address";
     public static final String DETAILS_ARRAY = "details";
 
 

@@ -4,6 +4,7 @@ import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -30,6 +31,7 @@ public class ChangePassword extends AppCompatActivity {
     TextInputEditText etOpass,etNpass,etCpass;
     Button reset;
     private UserSessionManager userSessionManager;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,17 @@ public class ChangePassword extends AppCompatActivity {
         etNpass =  findViewById(R.id.etNpass);
         etOpass = findViewById(R.id.etOpass);
         reset = findViewById(R.id.btnChangePass);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("Change Password");
+        setTitle("");
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         userSessionManager = new UserSessionManager(ChangePassword.this);
         reset.setOnClickListener(new View.OnClickListener() {
             @Override

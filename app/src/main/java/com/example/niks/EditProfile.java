@@ -3,6 +3,7 @@ package com.example.niks;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -30,6 +31,7 @@ public class EditProfile extends AppCompatActivity {
     Button update;
     UserSessionManager userSessionManager;
     String username,useremail,userid;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,17 @@ public class EditProfile extends AppCompatActivity {
         number.setFocusable(false);
         number.setEnabled(false);
         update =  findViewById(R.id.btnUpdate);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("Edit Profile");
+        setTitle("");
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         userSessionManager =  new UserSessionManager(EditProfile.this);
          name.setText(userSessionManager.getUserName());
         Log.d("new name",userSessionManager.getUserName());
