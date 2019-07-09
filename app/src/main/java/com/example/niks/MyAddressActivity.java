@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -39,6 +40,9 @@ public class MyAddressActivity extends AppCompatActivity {
     Toolbar toolbar;
     ArrayList<Shipping> Addresslist;
     UserSessionManager userSessionManager;
+    String totalitems,totalamounts,productArray;
+    private AddressAdapter addressAdapter ;
+
 
 
 
@@ -64,6 +68,18 @@ public class MyAddressActivity extends AppCompatActivity {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MyAddressActivity.this);
         rvAddress.setLayoutManager(linearLayoutManager);
+        final Intent intent = getIntent();
+        totalitems = intent.getStringExtra(JSONField.TOTAL_CART_ITEMS);
+        totalamounts = intent.getStringExtra(JSONField.TOTAL_AMOUNT);
+        productArray = intent.getStringExtra(JSONField.DETAILS_ARRAY);
+        Log.d("product array",productArray);
+
+
+//        Intent intent1 =  new Intent(MyAddressActivity.this,AddressAdapter.class);
+//        intent1.putExtra(JSONField.DETAILS_ARRAY,productArray);
+//        intent1.putExtra(JSONField.TOTAL_AMOUNT,totalamounts);
+//        intent1.putExtra(JSONField.TOTAL_CART_ITEMS,totalitems);
+//        startActivity(intent1);
         getAddresses();
     }
 
@@ -123,7 +139,7 @@ public class MyAddressActivity extends AppCompatActivity {
                         Addresslist.add(shipping);
 
                     }
-                    AddressAdapter addressAdapter = new AddressAdapter(this,Addresslist);
+                    AddressAdapter addressAdapter = new AddressAdapter(this,Addresslist,totalitems,totalamounts,productArray);
                     rvAddress.setAdapter(addressAdapter);
                 }
             }

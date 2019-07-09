@@ -12,11 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".OrderHistoryActivity"></activity>
+        <activity android:name=".OrderActivity" android:theme="@style/noactionbar" ></activity>
+        <activity android:name=".OrderHistoryActivity" android:theme="@style/noactionbar"  />
         <activity
             android:name=".MyAddressActivity"
             android:theme="@style/noactionbar" />
-        <activity android:name=".OrderDetailsActivity" />
 
         <uses-library
             android:name="org.apache.http.legacy"

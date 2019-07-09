@@ -308,6 +308,8 @@ public class Navigation extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_Orders) {
+            Intent intent = new Intent(Navigation.this,OrderActivity.class);
+            startActivity(intent);
 
         }else if (id == R.id.nav_Rate) {
 

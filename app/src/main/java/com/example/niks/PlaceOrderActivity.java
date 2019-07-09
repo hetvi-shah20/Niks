@@ -45,7 +45,8 @@ public class PlaceOrderActivity extends AppCompatActivity {
     Toolbar  toolbar;
     JSONObject jsonProduct;
     LinearLayout lldeliveyAddress,llselectAddress;
-    String totalitems,totalamounts;
+     String totalitems,totalamounts;
+     String productArray;
     String shipid,shipflatno,shipStreet,shipLandmark,shipArea,ShipCity,ShipPincode;
     public static final String main_key = "my_pref";
     public static final String item_key = "itemKey";
@@ -80,18 +81,24 @@ public class PlaceOrderActivity extends AppCompatActivity {
         });
 
 
-        final Intent intent = getIntent();
+       final Intent intent = getIntent();
         totalitems = intent.getStringExtra(JSONField.TOTAL_CART_ITEMS);
         totalamounts = intent.getStringExtra(JSONField.TOTAL_AMOUNT);
+        productArray = intent.getStringExtra(JSONField.DETAILS_ARRAY);
+        Log.d("product array",productArray);
         tvTotalItems.setText(totalitems);
+        //Log.d("totalitems",totalitems);
         tvTotalAmount.setText("₹"+totalamounts);
 
 
-        sharedPreferences = getSharedPreferences(main_key,MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(item_key,totalitems);
-        editor.putString(amount_key,totalamounts);
-        editor.commit();
+
+
+//
+//        sharedPreferences = getSharedPreferences(main_key,MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.putString(item_key,totalitems);
+//        editor.putString(amount_key,totalamounts);
+//        editor.commit();
 
        // placeOrderAdapter =  new PlaceOrderAdapter(this,cartArrayList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -103,13 +110,28 @@ public class PlaceOrderActivity extends AppCompatActivity {
         tvSelectAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PlaceOrderActivity.this,MyAddressActivity.class);
-                startActivity(intent);
+                Intent intent1 =  new Intent(PlaceOrderActivity.this,MyAddressActivity.class);
+                intent1.putExtra(JSONField.DETAILS_ARRAY,productArray);
+                intent1.putExtra(JSONField.TOTAL_AMOUNT,totalamounts);
+                intent1.putExtra(JSONField.TOTAL_CART_ITEMS,totalitems);
+                startActivity(intent1);
+
             }
         });
 
 
+
+        if (getIntent().hasExtra(JSONField.SHIPPING_ID)) {
+            deliveryAddress();
+        }
+
     }
+
+
+
+
+
+
 
     private void getCartItems() {
         cartArrayList = new ArrayList<>();
@@ -201,9 +223,15 @@ public class PlaceOrderActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (getIntent().hasExtra(JSONField.SHIPPING_ID)) {
-           deliveryAddress();
-        }
+        final Intent intent = getIntent();
+        totalitems = intent.getStringExtra(JSONField.TOTAL_CART_ITEMS);
+        totalamounts = intent.getStringExtra(JSONField.TOTAL_AMOUNT);
+        tvTotalItems.setText(totalitems);
+        Log.d("totalitems",totalitems);
+        tvTotalAmount.setText("₹"+totalamounts);
+
+
+
     }
 
 
@@ -226,19 +254,19 @@ public class PlaceOrderActivity extends AppCompatActivity {
         deliveryAddress.setText(Address);
 
 
-        SharedPreferences sharedPreferences2 = getSharedPreferences(main_key,MODE_PRIVATE);
-        String prefAmount = sharedPreferences2.getString(amount_key,"");
-        String preItems = sharedPreferences2.getString(item_key,"");
-        Log.d("preAmount ",prefAmount);
+//        SharedPreferences sharedPreferences2 = getSharedPreferences(main_key,MODE_PRIVATE);
+//        String prefAmount = sharedPreferences2.getString(amount_key,"");
+//        String preItems = sharedPreferences2.getString(item_key,"");
+//        Log.d("preAmount ",prefAmount);
 
 
 
-        final Intent intent = getIntent();
-        totalitems = intent.getStringExtra(JSONField.TOTAL_CART_ITEMS);
-        totalamounts = intent.getStringExtra(JSONField.TOTAL_AMOUNT);
-
-        tvTotalItems.setText(totalitems);
-        tvTotalAmount.setText("₹"+totalamounts);
+//        final Intent intent = getIntent();
+//        totalitems = intent.getStringExtra(JSONField.TOTAL_CART_ITEMS);
+//        totalamounts = intent.getStringExtra(JSONField.TOTAL_AMOUNT);
+//
+//        tvTotalItems.setText(totalitems);
+//        tvTotalAmount.setText("₹"+totalamounts);
 
     }
 }

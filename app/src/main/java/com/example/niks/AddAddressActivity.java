@@ -79,9 +79,9 @@ public class AddAddressActivity extends AppCompatActivity {
         CustomerAddArea = findViewById(R.id.etArea);
         CustomerAddCity = findViewById(R.id.etCity);
         CustomerAddPincode = findViewById(R.id.etPincode);
-        llselectAddress =  findViewById(R.id.selectAddress);
-        llShowAddress =  findViewById(R.id.showAddress);
-        DeliveryAddress =  findViewById(R.id.deliveryAddress);
+//        llselectAddress =  findViewById(R.id.selectAddress);
+//        llShowAddress =  findViewById(R.id.showAddress);
+      //  DeliveryAddress =  findViewById(R.id.deliveryAddress);
 
 
         btnAddressAddAddress.setOnClickListener(new View.OnClickListener() {
@@ -168,7 +168,7 @@ public class AddAddressActivity extends AppCompatActivity {
         orderDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         orderDialog.setCanceledOnTouchOutside(false);
         orderDialog.setCancelable(false);
-        orderDialog.setContentView(R.layout.order_placed_succesfully_pop_up);
+        orderDialog.setContentView(R.layout.address_added_succesfully_placed_pop_up);
         orderDialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
         orderDialog.getWindow().getDecorView().setBackground(new ColorDrawable(Color.TRANSPARENT));
         Button btnContinue = orderDialog.findViewById(R.id.btn_place_dialog_continue);

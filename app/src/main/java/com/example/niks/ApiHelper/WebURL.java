@@ -17,8 +17,9 @@ public class WebURL {
     public static final String CART_PRODUCT_DETAIL_URL = KEY_MAIN_URL + "cart-view-product-single.php";
     public static final String VIEW_CART_URL = KEY_MAIN_URL + "cart-view.php";
     public static final String REMOVE_FROM_CART_URL = KEY_MAIN_URL + "cart-remove.php";
-    public static final String NEW_ORDER_INSERT_URL = KEY_MAIN_URL + "add-order-api.php";
     public static final String ADD_ADDRESS_URL = KEY_MAIN_URL + "add-address-api.php";
     public static final String VIEW_ADDRESS_URL = KEY_MAIN_URL + "address-view.php";
+    public static final String INSERT_ORDER_URL = KEY_MAIN_URL + "insert-order-api.php";
+    public static final String ORDER_LISTING = KEY_MAIN_URL + "order-listing-api.php";
 
 }

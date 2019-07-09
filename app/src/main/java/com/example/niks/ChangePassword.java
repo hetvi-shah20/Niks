@@ -32,6 +32,7 @@ public class ChangePassword extends AppCompatActivity {
     Button reset;
     private UserSessionManager userSessionManager;
     Toolbar toolbar;
+    TextInputLayout opass,npass,cpass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,11 @@ public class ChangePassword extends AppCompatActivity {
         etNpass =  findViewById(R.id.etNpass);
         etOpass = findViewById(R.id.etOpass);
         reset = findViewById(R.id.btnChangePass);
+        opass = findViewById(R.id.opss);
+        npass = findViewById(R.id.npass);
+        cpass = findViewById(R.id.cpass);
+
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Change Password");
@@ -117,4 +123,6 @@ public class ChangePassword extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+
 }
