@@ -87,7 +87,11 @@ public class AddAddressActivity extends AppCompatActivity {
         btnAddressAddAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AddAddress();
+                if(checkFlatNo() && checkStreet()&& checkLandmark() && checkArea() && checkCity() && checkPincode() )
+                {
+                    AddAddress();
+
+                }
             }
         });
 
@@ -154,8 +158,15 @@ public class AddAddressActivity extends AppCompatActivity {
             if (flag == 1) {
                 btnAddressAddAddress.setEnabled(false);
                 showOrderPlaceDialog(strMessage);
+//                Toast.makeText(this, strMessage, Toast.LENGTH_SHORT).show();
+//                Intent intent1 =  new Intent(AddAddressActivity.this,PlaceOrderActivity.class);
+//                intent1.putExtra(JSONField.DETAILS_ARRAY,productArray);
+//                intent1.putExtra(JSONField.TOTAL_AMOUNT,TotalAmount);
+//                startActivity(intent1);
+
             } else {
                 btnAddressAddAddress.setEnabled(true);
+                Toast.makeText(this, strMessage, Toast.LENGTH_SHORT).show();
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -180,6 +191,9 @@ public class AddAddressActivity extends AppCompatActivity {
                 TaskStackBuilder taskStackBuilder = TaskStackBuilder.create(AddAddressActivity.this);
                 taskStackBuilder.addParentStack(Navigation.class);
                 Intent intent = new Intent(AddAddressActivity.this, MyAddressActivity.class);
+                intent.putExtra(JSONField.DETAILS_ARRAY,productArray);
+                Log.d("array at add address",productArray);
+                intent.putExtra(JSONField.TOTAL_AMOUNT,TotalAmount);
                 taskStackBuilder.addNextIntentWithParentStack(intent);
                 taskStackBuilder.startActivities();
             }

@@ -34,6 +34,7 @@ import com.example.niks.ApiHelper.WebURL;
 import com.example.niks.Model.Shipping;
 import com.example.niks.MyAddressActivity;
 import com.example.niks.Navigation;
+import com.example.niks.OrderActivity;
 import com.example.niks.PlaceOrderActivity;
 import com.example.niks.R;
 import com.example.niks.UserSessionManager;
@@ -50,7 +51,6 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.ViewHold
     ArrayList<Shipping> addressList;
     UserSessionManager userSessionManager ;
     String totalitems,totalamounts,productArray;
-    String tti;
     String shippingid;
 
 
@@ -94,7 +94,7 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.ViewHold
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                    Log.d("product Array",productArray);
+//                    Log.d("product Array",productArray);
                         shippingid = shipping.getShipping_id();
                         Log.d("shipping id",shippingid);
                     PlaceOrder();
@@ -193,7 +193,7 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.ViewHold
                     orderDialog.dismiss();
                     TaskStackBuilder taskStackBuilder = TaskStackBuilder.create(context);
                     taskStackBuilder.addParentStack(Navigation.class);
-                    Intent intent = new Intent(context, Navigation.class);
+                    Intent intent = new Intent(context, OrderActivity.class);
                     taskStackBuilder.addNextIntentWithParentStack(intent);
                     taskStackBuilder.startActivities();
                 }

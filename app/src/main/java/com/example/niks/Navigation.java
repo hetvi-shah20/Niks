@@ -20,14 +20,20 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -55,8 +61,12 @@ public class Navigation extends AppCompatActivity
     RecyclerView rvCategory;
     ArrayList<Category> listCategory;
     String name;
+    LinearLayout llCategory,llNoInternetConnection,llEmptyState;
     ViewFlipper viewFlipper;
     NotificationBadge badge ;
+    TextView tvEmptyStateMessage;
+    TextView tvErrorTitle;
+    Button btnRetry;
     Toolbar toolbar;
     com.example.niks.Model.Cart cart =  new com.example.niks.Model.Cart();
     ArrayList<com.example.niks.Model.Cart> listCart = new ArrayList<com.example.niks.Model.Cart>();
@@ -70,17 +80,18 @@ public class Navigation extends AppCompatActivity
         rvCategory = findViewById(R.id.rvCategory);
         badge = findViewById(R.id.badge);
 
+        llNoInternetConnection = findViewById(R.id.ll_no_internet);
+        llEmptyState = findViewById(R.id.ll_empty_state);
+        tvEmptyStateMessage = findViewById(R.id.tvEmptyStateMessage);
+        tvErrorTitle = findViewById(R.id.tvErrorTitle);
+        btnRetry = findViewById(R.id.btnRetry);
+
+//     tvEmptyStateMessage.setText("Sorry there are no categories available at moment ! Please try again later.");
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Niks");
         setTitle("");
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
+
         userSessionManager =  new UserSessionManager(Navigation.this);
         if(userSessionManager.getLoginStatus())
         {
@@ -116,6 +127,10 @@ public class Navigation extends AppCompatActivity
 
         navUsername.setText(userSessionManager.getUserName());
         navUserEmail.setText(userSessionManager.getUserEmail());
+
+
+
+
         getCartRVData();
        // badge.setText(cart.getTotal_cart_items());
     }
@@ -130,6 +145,36 @@ public class Navigation extends AppCompatActivity
             @Override
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
+
+                if (error instanceof ServerError) {
+
+                    tvErrorTitle.setText("Server Problem!");
+                    llCategory.setVisibility(View.GONE);
+                    llEmptyState.setVisibility(View.GONE);
+                    llNoInternetConnection.setVisibility(View.VISIBLE);
+                } else if (error instanceof NoConnectionError) {
+
+                    tvErrorTitle.setText("No Internet Connection!");
+                    llCategory.setVisibility(View.GONE);
+                    llEmptyState.setVisibility(View.GONE);
+                    llNoInternetConnection.setVisibility(View.VISIBLE);
+                } else if (error instanceof TimeoutError) {
+
+                    tvErrorTitle.setText("Timeout Error!");
+                    llCategory.setVisibility(View.GONE);
+                    llEmptyState.setVisibility(View.GONE);
+                    llNoInternetConnection.setVisibility(View.VISIBLE);
+                } else if (error instanceof NetworkError) {
+
+                    tvErrorTitle.setText("Network Error!");
+                    llCategory.setVisibility(View.GONE);
+                    llEmptyState.setVisibility(View.GONE);
+                    llNoInternetConnection.setVisibility(View.VISIBLE);
+                }
+
+
+
+
             }
         }){
             @Override

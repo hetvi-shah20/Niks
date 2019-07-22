@@ -1,5 +1,6 @@
 package com.example.niks;
 
+import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +30,7 @@ import java.util.Map;
 
 public class ChangePassword extends AppCompatActivity {
     TextInputEditText etOpass,etNpass,etCpass;
+
     Button reset;
     private UserSessionManager userSessionManager;
     Toolbar toolbar;
@@ -113,8 +115,10 @@ public class ChangePassword extends AppCompatActivity {
             String message = jsonObject.optString(JSONField.MESSAGE);
             if (success == 1)
             {
-                    Toast.makeText(this, "Password Chnaged Successfully", Toast.LENGTH_SHORT).show();
 
+                    Toast.makeText(this, "Password Chnaged Successfully", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(ChangePassword.this,Navigation.class);
+                    startActivity(intent);
             }
             else {
                 Toast.makeText(this,message, Toast.LENGTH_SHORT).show();
@@ -122,6 +126,19 @@ public class ChangePassword extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    private void validation()
+    {
+        Boolean isValid =  true;
+        if(etOpass.getText().toString().equals(""))
+        {
+            opass.setError("Password should not be empty");
+            isValid = false;
+        }else {
+            opass.setErrorEnabled(false);
+        }
+
     }
 
 

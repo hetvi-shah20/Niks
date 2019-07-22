@@ -7,5 +7,5 @@
         android:title="cart"
         android:icon="@drawable/ic_shopping_cart_black_24dp"
         app:showAsAction="always"
-        android:actionLayout="@layout/action_bar_notification_icon"/>
+        android:actionLayout="@layout/cart_menu"/>
 </menu>

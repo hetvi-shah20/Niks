@@ -163,6 +163,9 @@ public class MyAddressActivity extends AppCompatActivity {
         {
             case R.id.addAddressiv:
                 Intent intent = new Intent(MyAddressActivity.this,AddAddressActivity.class);
+                intent.putExtra(JSONField.DETAILS_ARRAY,productArray);
+                Log.d("array at address",productArray);
+                intent.putExtra(JSONField.TOTAL_AMOUNT,totalamounts);
                 startActivity(intent);
         }
         return true;

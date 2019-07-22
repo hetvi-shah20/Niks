@@ -26,6 +26,10 @@
         <item name="android:fontFamily">@font/amiko</item>
     </style>
 
+    <style name="error_appearance" parent="TextAppearance.AppCompat" >
+        <item name="android:textColor">@color/error_Validation_color</item>
+
+    </style>
 
 
 

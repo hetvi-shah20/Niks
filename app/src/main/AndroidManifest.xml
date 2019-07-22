@@ -3,6 +3,8 @@
     package="com.example.niks">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -12,8 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".OrderActivity" android:theme="@style/noactionbar" ></activity>
-        <activity android:name=".OrderHistoryActivity" android:theme="@style/noactionbar"  />
+        <activity android:name=".AboutUs"></activity>
+        <activity android:name=".ContactusActivity" />
+        <activity
+            android:name=".OrderActivity"
+            android:theme="@style/noactionbar" />
+        <activity
+            android:name=".OrderHistoryActivity"
+            android:theme="@style/noactionbar" />
         <activity
             android:name=".MyAddressActivity"
             android:theme="@style/noactionbar" />

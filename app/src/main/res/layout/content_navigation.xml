@@ -19,12 +19,33 @@
             android:layout_height="match_parent"
 
             android:orientation="vertical">
+
+
+            <ViewFlipper
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/niks"/>
+
+            </ViewFlipper>
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rvCategory"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:gravity="center"></android.support.v7.widget.RecyclerView>
-        </LinearLayout>
+
+
+
+
+
+       </LinearLayout>
+
+
     </ScrollView>
 </LinearLayout>

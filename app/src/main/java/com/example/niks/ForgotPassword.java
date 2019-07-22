@@ -50,7 +50,7 @@ public class ForgotPassword extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 sendPasswordRequest();
-                Toast.makeText(ForgotPassword.this, "Check Your Email", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ForgotPassword.this, "Check Your Email", Toast.LENGTH_LONG).show();
                 Intent intent =  new Intent(ForgotPassword.this,Login.class);
                 finish();
                 startActivity(intent);

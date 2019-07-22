@@ -38,7 +38,7 @@ import java.util.Map;
 public class OrderHistoryActivity extends AppCompatActivity {
 
     Toolbar toolbar;
-    TextView tvOrderDetailsDate, tvOrderId, tvOrderDetailsTotalAmount;
+    TextView tvOrderDetailsDate, tvOrderId, tvOrderDetailsTotalAmount,username;
 
     String OrderID, Date, TotalAmount;
 
@@ -80,6 +80,7 @@ public class OrderHistoryActivity extends AppCompatActivity {
         tvOrderDetailsDate = findViewById(R.id.tv_order_details_date);
         tvOrderId = findViewById(R.id.tv_order_details_id);
         tvOrderDetailsTotalAmount = findViewById(R.id.tv_order_details_gross_amount);
+        username = findViewById(R.id.tv_order_username);
 
 
         rvOrderDetails = findViewById(R.id.rv_order_details);
@@ -138,6 +139,7 @@ public class OrderHistoryActivity extends AppCompatActivity {
 
                             tvOrderId.setText(order_id);
                             tvOrderDetailsDate.setText(order_date);
+                            username.setText(userSessionManager.getUserName());
 
 
                             String Total = order_amount;

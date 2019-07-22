@@ -230,8 +230,6 @@ public class PlaceOrderActivity extends AppCompatActivity {
         Log.d("totalitems",totalitems);
         tvTotalAmount.setText("₹"+totalamounts);
 
-
-
     }
 
 

@@ -1,6 +1,8 @@
 package com.example.niks;
 
 import android.content.Intent;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -29,7 +31,8 @@ import java.util.Map;
 
 public class Signup extends AppCompatActivity {
 
-    EditText name,email,password,mobile,address;
+    TextInputEditText name,email,password,mobile,address;
+    TextInputLayout tname,temail,tpassword,tmobile,taddress;
     RadioButton gendermale,genderfemale;
     Button submit;
     private String selectedGender;
@@ -47,6 +50,14 @@ public class Signup extends AppCompatActivity {
         gendermale =  findViewById(R.id.male);
         genderfemale = findViewById(R.id.female);
         submit =  findViewById(R.id.btnSignup);
+
+        tname =  findViewById(R.id.tipName);
+        temail =  findViewById(R.id.tipEmail);
+        tmobile = findViewById(R.id.tipPhone);
+        taddress = findViewById(R.id.tipAddress);
+        tpassword =  findViewById(R.id.tipPwd);
+
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Sign Up");
@@ -61,22 +72,19 @@ public class Signup extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                switch (v.getId())
-//                {
-//                    case R.id.btnSignup:
-                        if(checkUser() && checkEmail() && checkPassword() && checkGender() && checkMobileNumber() && checkAddress() )
+             switch (v.getId())              {
+                 case R.id.btnSignup:
+                        if(checkUser() && checkEmail() && checkPassword() && checkGender() && checkMobileNumber() && checkAddress())
                         {
                           selectedGender = genderfemale.isChecked() ? "Female" : "Male";
                             sendSignupRequest();
                             Intent intent =  new Intent(Signup.this,Login.class);
                             startActivity(intent);
-                        }
-//                        break;
+                        }break;
 
                 }
 
-
-//            }
+            }
 
 
             private void sendSignupRequest() {
@@ -208,5 +216,96 @@ public class Signup extends AppCompatActivity {
         }
         return isAddressValid;
     }
+
+    private boolean validation()
+    {
+
+        boolean isValid = true;
+
+
+        if(name.getText().toString().equals(""))
+        {
+            tname.setError("Name should not be empty");
+            isValid = false;
+        }else {
+            tname.setErrorEnabled(false);
+        }
+
+        if(email.getText().toString().equals("")) {
+            temail.setError("Email should not be empty");
+            //  tipEmailid.setErrorTextColor(ColorStateList.valueOf(R.color.error_Validation_color));
+            isValid = false;
+        }
+        else{
+            temail.setErrorEnabled(false);
+        }
+
+
+//        if(Patterns.EMAIL_ADDRESS.matcher(email.getText().toString().trim()).matches()) {
+//            temail.setError("Enter correct Email ");
+//            //  tipEmailid.setErrorTextColor(ColorStateList.valueOf(R.color.error_Validation_color));
+//            isValid = false;
+//        }
+//        else{
+//            temail.setErrorEnabled(false);
+//        }
+
+        if(password.getText().toString().equals(""))
+        {
+            tpassword.setError("Password should not be empty");
+            isValid = false;
+        }else {
+            tpassword.setErrorEnabled(false);
+        }
+
+        if(password.getText().toString().toString().length() < 8)
+        {
+            tpassword.setError("Password should not be less than 8");
+            isValid = false;
+        }else {
+            tpassword.setErrorEnabled(false);
+        }
+
+
+        isValid = gendermale.isChecked() || genderfemale.isChecked();
+        if(isValid == false)
+        {
+            Toast.makeText(this, "select gender", Toast.LENGTH_SHORT).show();
+        }
+
+
+
+
+        if(mobile.getText().toString().toString().length() < 10)
+        {
+            tmobile.setError("Mobile should not be less than 10");
+            isValid = false;
+        }else {
+            tmobile.setErrorEnabled(false);
+        }
+
+
+//        if(mobile.getText().toString().equals(""))
+//        {
+//            tmobile.setError("Mobile should not be empty");
+//            isValid = false;
+//        }else {
+//            tmobile.setErrorEnabled(false);
+   // }
+
+
+        if(address.getText().toString().equals(""))
+        {
+            taddress.setError("Address should not be empty");
+            isValid = false;
+        }else {
+            taddress.setErrorEnabled(false);
+
+        }
+        return isValid;
+    }
+
+
+
 
 }

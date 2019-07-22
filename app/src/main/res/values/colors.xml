@@ -8,4 +8,6 @@
     <color name="gen_black">#000000</color>
     <color name="green_light">#43A047</color>
     <color name="grey_light">#E0E0E0</color>
+
+    <color name="error_Validation_color">#43A043</color>
 </resources>
