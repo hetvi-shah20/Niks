@@ -61,15 +61,17 @@
                 android:inputType="textPassword"
                 />
         </android.support.design.widget.TextInputLayout>
+
         <TextView
             android:id="@+id/txtForgotpwd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="right"
             android:text="Forgot Password?"
             android:textColor="@android:color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             android:typeface="normal"
-            android:gravity="right"
             app:fontFamily="@font/amiko" />
 
         <Button
@@ -83,14 +85,16 @@
             android:textSize="25dp"
 
             />
+
         <TextView
             android:id="@+id/createaccount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Create an account"
             android:layout_marginTop="15dp"
+            android:text="Create an account"
             android:textColor="@android:color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             app:fontFamily="@font/amiko" />
 
 

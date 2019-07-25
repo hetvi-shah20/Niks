@@ -1,9 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="15dp"
     tools:context=".ContactusActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:src="@drawable/splashscreen"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Niks Home Care"
+        android:fontFamily="@font/amiko"
+        android:textColor="@color/gen_black"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:gravity="center"
+
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mr.Setu Patel"
+        android:fontFamily="@font/amiko"
+        android:textColor="@color/gen_black"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:gravity="center"
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address :  "
+        android:fontFamily="@font/amiko"
+        android:textColor="@color/gen_black"
+        android:textStyle="bold"
+        android:textSize="17.5dp"
+        android:gravity="left"
+        />
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="G-1, Ashka tower, Opp shyam satadhar, Nr. kala sagar mall, Ghatlodiya,Ahmedabad,Gujarat - 382721"
+            android:fontFamily="@font/amiko"
+            android:textColor="@color/gen_black"
+            android:textStyle="bold"
+            android:textSize="17dp"
+            android:gravity="left"
+            />
+    </LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:layout_marginTop="25dp">
+
+
+    <ImageView
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_call_black_24dp"/>
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Call Now"
+        android:layout_marginLeft="9dp"
+        android:fontFamily="@font/amiko"
+        android:textColor="@color/gen_black"
+        android:textSize="20dp"
+        android:gravity="center"
+        />
+</LinearLayout>
+
+    <Button
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:layout_marginTop="14dp"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:background="@drawable/rounded_button"
+        android:text="+91 82642 73484"
+        />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="25dp">
+
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_email_black_24dp"/>
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:layout_marginLeft="9dp"
+            android:fontFamily="@font/amiko"
+            android:textColor="@color/gen_black"
+            android:textSize="20dp"
+            android:gravity="center"
+            />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:layout_marginTop="14dp"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:background="@drawable/rounded_button"
+        android:text="support@nikshomecare.com"
+        android:textAllCaps="false"
+        />
+</LinearLayout>

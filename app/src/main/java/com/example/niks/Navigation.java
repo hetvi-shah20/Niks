@@ -344,6 +344,10 @@ public class Navigation extends AppCompatActivity
         } else if (id == R.id.nav_About) {
 
         } else if (id == R.id.nav_Contact) {
+            Intent intent = new Intent(Navigation.this,ContactusActivity
+                    .class);
+            startActivity(intent);
+
 
         } else if (id == R.id.nav_notification) {
 
