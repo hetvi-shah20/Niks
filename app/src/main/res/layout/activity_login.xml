@@ -15,6 +15,18 @@
     <!--android:orientation="vertical"-->
     <!--android:layout_gravity="center">-->
 
+    <Button
+        android:id="@+id/errormsg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/retecngle_button"
+        android:text=""
+        android:textAllCaps="false"
+        android:visibility="gone"
+        android:textColor="#f8fdf9"
+        android:textSize="18dp"/>
+
+
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -107,11 +119,13 @@
             android:text="Login With Google"
             android:textColor="#f8fdf9"
             android:textSize="18dp" />
+
 </LinearLayout>
 
 
     <!--</LinearLayout>-->
 </ScrollView>
+
     </LinearLayout>
 
 

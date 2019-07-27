@@ -14,8 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AboutUs"></activity>
-        <activity android:name=".ContactusActivity" />
+        <activity android:name=".NotificationActivity"
+            android:theme="@style/noactionbar"></activity>
+        <activity
+            android:name=".AboutUs"
+            android:theme="@style/noactionbar" />
+        <activity
+            android:name=".ContactusActivity"
+            android:theme="@style/noactionbar" />
         <activity
             android:name=".OrderActivity"
             android:theme="@style/noactionbar" />

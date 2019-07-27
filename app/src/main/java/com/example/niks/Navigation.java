@@ -87,7 +87,7 @@ public class Navigation extends AppCompatActivity
         btnRetry = findViewById(R.id.btnRetry);
 
 //     tvEmptyStateMessage.setText("Sorry there are no categories available at moment ! Please try again later.");
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.Navitoolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Niks");
         setTitle("");
@@ -149,25 +149,25 @@ public class Navigation extends AppCompatActivity
                 if (error instanceof ServerError) {
 
                     tvErrorTitle.setText("Server Problem!");
-                    llCategory.setVisibility(View.GONE);
+                    viewFlipper.setVisibility(View.GONE);
                     llEmptyState.setVisibility(View.GONE);
                     llNoInternetConnection.setVisibility(View.VISIBLE);
                 } else if (error instanceof NoConnectionError) {
 
                     tvErrorTitle.setText("No Internet Connection!");
-                    llCategory.setVisibility(View.GONE);
+                    viewFlipper.setVisibility(View.GONE);
                     llEmptyState.setVisibility(View.GONE);
                     llNoInternetConnection.setVisibility(View.VISIBLE);
                 } else if (error instanceof TimeoutError) {
 
                     tvErrorTitle.setText("Timeout Error!");
-                    llCategory.setVisibility(View.GONE);
+                    viewFlipper.setVisibility(View.GONE);
                     llEmptyState.setVisibility(View.GONE);
                     llNoInternetConnection.setVisibility(View.VISIBLE);
                 } else if (error instanceof NetworkError) {
 
                     tvErrorTitle.setText("Network Error!");
-                    llCategory.setVisibility(View.GONE);
+                    viewFlipper.setVisibility(View.GONE);
                     llEmptyState.setVisibility(View.GONE);
                     llNoInternetConnection.setVisibility(View.VISIBLE);
                 }
@@ -342,6 +342,8 @@ public class Navigation extends AppCompatActivity
         if (id == R.id.nav_home) {
             // Handle the camera action
         } else if (id == R.id.nav_About) {
+            Intent intent = new Intent(Navigation.this,AboutUs.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_Contact) {
             Intent intent = new Intent(Navigation.this,ContactusActivity
@@ -350,6 +352,9 @@ public class Navigation extends AppCompatActivity
 
 
         } else if (id == R.id.nav_notification) {
+            Intent intent = new Intent(Navigation.this,NotificationActivity
+                    .class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_Logout) {
             userSessionManager.logout();
@@ -364,6 +369,12 @@ public class Navigation extends AppCompatActivity
 
         }else if (id == R.id.nav_share) {
 
+
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_SEND);
+            intent.putExtra(Intent.EXTRA_TEXT,"");
+            intent.setType("text/plain");
+            startActivity(Intent.createChooser(intent,"Choose App to share app"));
 
         }else if(id == R.id.nav_Profile)
         {

@@ -39,7 +39,7 @@ import java.util.regex.Pattern;
 
 public class Login extends AppCompatActivity {
     TextView signup,forgotpwd;
-    Button login;
+    Button login,errormsg;
    TextInputEditText emailid,password;
     UserSessionManager userSessionManager;
     Toolbar toolbar;
@@ -59,7 +59,7 @@ public class Login extends AppCompatActivity {
         emailid =  findViewById(R.id.etEmailId);
         tipPassword = findViewById(R.id.tipPassword);
         tipEmailid = findViewById(R.id.tipEmailId);
-
+        errormsg =  findViewById(R.id.errormsg);
 
         password = findViewById(R.id.etPassword);
 
@@ -142,6 +142,7 @@ public class Login extends AppCompatActivity {
             JSONObject jsonObject = new JSONObject(response);
             if(jsonObject.has(JSONField.SUCCESS))
             {
+                String Message = jsonObject.optString(JSONField.MESSAGE);
                 int success = jsonObject.optInt(JSONField.SUCCESS);
                 if (success == 1)
                 {
@@ -163,13 +164,16 @@ public class Login extends AppCompatActivity {
                     Intent intent = new Intent(Login.this,Navigation.class);
 
                     startActivity(intent);
-                    Toast.makeText(this, "login successful", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "login successful", Toast.LENGTH_LONG).show();
 
 
                 }
             else
                 {
-                    Toast.makeText(this, "Invalid login details", Toast.LENGTH_SHORT).show();
+
+                    errormsg.setVisibility(View.VISIBLE);
+                    errormsg.setText(Message);
+                   // Toast.makeText(this, Message, Toast.LENGTH_LONG).show();
                 }
 
             }
