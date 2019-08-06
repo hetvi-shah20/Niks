@@ -14,4 +14,9 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+
+
+    <string name="FACEBOOK_APP_ID">2381648125191165</string>
+    <string name="ACCOUNT_KIT_CLIENT_TOKEN">d602de1a080a327d1547312ca8614e5f</string>
+
 </resources>

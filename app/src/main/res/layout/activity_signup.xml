@@ -1,219 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    tools:context=".Signup">
-    <include layout="@layout/custom_toolbar" />
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".Signup">
+
+        <include layout="@layout/custom_toolbar" android:id="@+id/custom_toolbar" />
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_gravity="center">
-    <!--<android.support.v7.widget.CardView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_margin="10dp"-->
-        <!--app:cardBackgroundColor="@android:color/white"-->
-        <!--app:cardCornerRadius="10dp"-->
-        <!--app:cardUseCompatPadding="true">-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-
-        <!--<EditText-->
-
-            <!--android:id="@+id/etName"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:ems="10"-->
-            <!--android:layout_margin="10dp"-->
-            <!--android:drawablePadding="10dp"-->
-            <!--android:drawableLeft="@drawable/ic_person_black_24dp"-->
-            <!--android:layout_marginTop="80dp"-->
-            <!--android:inputType="textPersonName"-->
-            <!--android:hint=" Name" />-->
-
-            <android.support.design.widget.TextInputLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/tipName"
-                >
-
-                <android.support.design.widget.TextInputEditText
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:orientation="vertical">
+                <!--<android.support.v7.widget.CardView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_margin="10dp"-->
+                <!--app:cardBackgroundColor="@android:color/white"-->
+                <!--app:cardCornerRadius="10dp"-->
+                <!--app:cardUseCompatPadding="true">-->
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/ic_person_black_24dp"
-                    android:drawablePadding="10dp"
-                    android:hint="Name"
-                    android:id="@+id/etName"
-                    android:inputType="text"
-                    />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/tipEmail"
-                >
-
-            <android.support.design.widget.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_email_black_24dp"
-                android:drawablePadding="10dp"
-                android:hint="Email"
-                android:id="@+id/etEmail"
-                android:inputType="textEmailAddress"
-                />
-            </android.support.design.widget.TextInputLayout>
-        <!--<EditText-->
-            <!--android:id="@+id/etEmail"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:drawableLeft="@drawable/ic_email_black_24dp"-->
-            <!--android:layout_margin="10dp"-->
-            <!--android:ems="10"-->
-            <!--android:drawablePadding="10dp"-->
-            <!--android:hint="Email Id"-->
-            <!--android:inputType="textEmailAddress" />-->
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/tipPwd"
-                app:passwordToggleEnabled="true"
-                >
-
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/ic_email_black_24dp"
-                    android:drawablePadding="10dp"
-                    android:hint="Password"
-                    android:id="@+id/etPassword"
-                    android:inputType="textPassword"
-                    />
-            </android.support.design.widget.TextInputLayout>
-
-        <!--<EditText-->
-            <!--android:id="@+id/etPassword"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_margin="10dp"-->
-            <!--android:drawableLeft="@drawable/ic_lock_black_24dp"-->
-            <!--android:ems="10"-->
-            <!--android:drawablePadding="10dp"-->
-            <!--android:hint="Password"-->
-            <!--android:inputType="textPersonName" />-->
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="70dp"
-                android:id="@+id/male"
-                android:textSize="18sp"
-                android:text="Male"/>
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
 
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:id="@+id/female"
-                android:textSize="18sp"
-                android:text="Female"/>
-        </RadioGroup>
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/tipPhone"
-                >
+                    <!--<EditText-->
 
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/ic_phone_black_24dp"
-                    android:drawablePadding="10dp"
-                    android:hint="Phone No"
-                    android:id="@+id/etPhone"
-                    android:inputType="number"
-                    />
-            </android.support.design.widget.TextInputLayout>
+                    <!--android:id="@+id/etName"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:ems="10"-->
+                    <!--android:layout_margin="10dp"-->
+                    <!--android:drawablePadding="10dp"-->
+                    <!--android:drawableLeft="@drawable/ic_person_black_24dp"-->
+                    <!--android:layout_marginTop="80dp"-->
+                    <!--android:inputType="textPersonName"-->
+                    <!--android:hint=" Name" />-->
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tipName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/etName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_person_black_24dp"
+                            android:drawablePadding="10dp"
+                            android:hint="Name"
+                            android:inputType="text" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tipEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/etEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_email_black_24dp"
+                            android:drawablePadding="10dp"
+                            android:hint="Email"
+                            android:inputType="textEmailAddress" />
+                    </android.support.design.widget.TextInputLayout>
+                    <!--<EditText-->
+                    <!--android:id="@+id/etEmail"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:drawableLeft="@drawable/ic_email_black_24dp"-->
+                    <!--android:layout_margin="10dp"-->
+                    <!--android:ems="10"-->
+                    <!--android:drawablePadding="10dp"-->
+                    <!--android:hint="Email Id"-->
+                    <!--android:inputType="textEmailAddress" />-->
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tipPwd"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:passwordToggleEnabled="true">
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/etPassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_email_black_24dp"
+                            android:drawablePadding="10dp"
+                            android:hint="Password"
+                            android:inputType="textPassword" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <!--<EditText-->
+                    <!--android:id="@+id/etPassword"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_margin="10dp"-->
+                    <!--android:drawableLeft="@drawable/ic_lock_black_24dp"-->
+                    <!--android:ems="10"-->
+                    <!--android:drawablePadding="10dp"-->
+                    <!--android:hint="Password"-->
+                    <!--android:inputType="textPersonName" />-->
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/male"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="70dp"
+                            android:text="Male"
+                            android:textSize="18sp" />
 
 
-        <!--<EditText-->
-            <!--android:id="@+id/etPhone"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:ems="10"-->
-            <!--android:drawablePadding="10dp"-->
-            <!--android:drawableLeft="@drawable/ic_phone_black_24dp"-->
-            <!--android:layout_margin="10dp"-->
-            <!--android:hint="Phone Number"-->
-            <!--android:inputType="number" />-->
+                        <RadioButton
+                            android:id="@+id/female"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:text="Female"
+                            android:textSize="18sp" />
+                    </RadioGroup>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tipPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/etPhone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_phone_black_24dp"
+                            android:drawablePadding="10dp"
+                            android:hint="Phone No"
+                            android:inputType="number" />
+                    </android.support.design.widget.TextInputLayout>
 
 
+                    <!--<EditText-->
+                    <!--android:id="@+id/etPhone"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:ems="10"-->
+                    <!--android:drawablePadding="10dp"-->
+                    <!--android:drawableLeft="@drawable/ic_phone_black_24dp"-->
+                    <!--android:layout_margin="10dp"-->
+                    <!--android:hint="Phone Number"-->
+                    <!--android:inputType="number" />-->
 
-        <!--<EditText-->
-            <!--android:id="@+id/etAddress"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:ems="10"-->
-            <!--android:layout_margin="10dp"-->
-            <!--android:drawablePadding="10dp"-->
-            <!--android:drawableLeft="@drawable/ic_home_black_24dp"-->
-            <!--android:gravity="start|top"-->
-            <!--android:hint="Address"-->
-            <!--android:inputType="textMultiLine" />-->
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/tipAddress"
-                >
 
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/ic_home_black_24dp"
-                    android:drawablePadding="10dp"
-                    android:hint="Address"
-                    android:id="@+id/etAddress"
-                    android:inputType="textMultiLine"
-                    />
-            </android.support.design.widget.TextInputLayout>
-            <Button
-                android:id="@+id/btnSignup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@drawable/rounded_button"
-                android:text="Sign Up"
-                android:layout_marginTop="80dp"
-                android:textColor="#f8fdf9"
-                android:textSize="25dp" />
+                    <!--<EditText-->
+                    <!--android:id="@+id/etAddress"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:ems="10"-->
+                    <!--android:layout_margin="10dp"-->
+                    <!--android:drawablePadding="10dp"-->
+                    <!--android:drawableLeft="@drawable/ic_home_black_24dp"-->
+                    <!--android:gravity="start|top"-->
+                    <!--android:hint="Address"-->
+                    <!--android:inputType="textMultiLine" />-->
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tipAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-        </LinearLayout>
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/etAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_home_black_24dp"
+                            android:drawablePadding="10dp"
+                            android:hint="Address"
+                            android:inputType="textMultiLine" />
+                    </android.support.design.widget.TextInputLayout>
 
-    <!--</android.support.v7.widget.CardView>-->
-        </LinearLayout>
-    </ScrollView>
+                    <Button
+                        android:id="@+id/btnSignup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="80dp"
+                        android:background="@drawable/rounded_button"
+                        android:text="Sign Up"
+                        android:textColor="#f8fdf9"
+                        android:textSize="25dp" />
 
-</LinearLayout>
+                </LinearLayout>
+
+                <!--</android.support.v7.widget.CardView>-->
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>

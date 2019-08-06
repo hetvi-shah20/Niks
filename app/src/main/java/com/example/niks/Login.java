@@ -1,14 +1,20 @@
 package com.example.niks;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.content.res.ColorStateList;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
@@ -28,29 +34,48 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.niks.ApiHelper.JSONField;
 import com.example.niks.ApiHelper.WebURL;
+import com.example.niks.Model.CheckUserResponse;
+import com.example.niks.Retrofit.Common;
+import com.example.niks.Retrofit.NiksAPI;
+import com.facebook.accountkit.Account;
+import com.facebook.accountkit.AccountKit;
+import com.facebook.accountkit.AccountKitCallback;
+import com.facebook.accountkit.AccountKitError;
+import com.facebook.accountkit.AccountKitLoginResult;
+import com.facebook.accountkit.ui.AccountKitActivity;
+import com.facebook.accountkit.ui.AccountKitConfiguration;
+import com.facebook.accountkit.ui.LoginType;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import dmax.dialog.SpotsDialog;
+import retrofit2.Call;
+import retrofit2.Callback;
+
 public class Login extends AppCompatActivity {
     TextView signup,forgotpwd;
-    Button login,errormsg;
+    Button login,errormsg,otp;
    TextInputEditText emailid,password;
     UserSessionManager userSessionManager;
     Toolbar toolbar;
     TextInputLayout tipPassword,tipEmailid;
     private Context context;
-
+    NiksAPI mService;
+    private static final int REQUEST_CODE =1000 ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        mService = Common.getAPI();
         userSessionManager = new UserSessionManager(Login.this);
 
         signup =  findViewById(R.id.createaccount);
@@ -60,6 +85,7 @@ public class Login extends AppCompatActivity {
         tipPassword = findViewById(R.id.tipPassword);
         tipEmailid = findViewById(R.id.tipEmailId);
         errormsg =  findViewById(R.id.errormsg);
+        otp = findViewById(R.id.btnOTP);
 
         password = findViewById(R.id.etPassword);
 
@@ -74,6 +100,7 @@ public class Login extends AppCompatActivity {
                 onBackPressed();
             }
         });
+        printKeyHash();
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,7 +130,87 @@ public class Login extends AppCompatActivity {
                 startActivity(i2);
             }
         });
+        otp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //startLoginPage(LoginType.PHONE);
+            }
+        });
     }
+
+    private void startLoginPage(LoginType loginType) {
+        Intent intent = new Intent(this, AccountKitActivity.class);
+        AccountKitConfiguration.AccountKitConfigurationBuilder builder=
+                new AccountKitConfiguration.AccountKitConfigurationBuilder(loginType,
+                        AccountKitActivity.ResponseType.TOKEN);
+        intent.putExtra(AccountKitActivity.ACCOUNT_KIT_ACTIVITY_CONFIGURATION,builder.build());
+        startActivityForResult(intent,REQUEST_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE) {
+            AccountKitLoginResult result = data.getParcelableExtra(AccountKitLoginResult.RESULT_KEY);
+
+            if (result.getError() != null) {
+                Toast.makeText(this, "" + result.getError().getErrorType().getMessage(), Toast.LENGTH_SHORT).show();
+
+            } else if (result.wasCancelled()) {
+                Toast.makeText(this, "Cancel", Toast.LENGTH_SHORT).show();
+            }else
+            {
+                if(result.getAccessToken() != null)
+                {
+
+                    final AlertDialog alertDialog= new
+                            SpotsDialog.Builder().setContext(Login.this).build();
+                    alertDialog.setMessage("Please wait.....");
+                    alertDialog.show();
+
+                    AccountKit.getCurrentAccount(new AccountKitCallback<Account>() {
+                        @Override
+                        public void onSuccess(final Account account) {
+
+                            mService.checkUserExists(account.getPhoneNumber().toString())
+                                    .enqueue(new Callback<CheckUserResponse>() {
+                                        @Override
+                                        public void onResponse(Call<CheckUserResponse> call, retrofit2.Response<CheckUserResponse> response) {
+                                            CheckUserResponse userResponse = response.body();
+                                            if(userResponse.isExists())
+                                            {
+                                                alertDialog.dismiss();
+                                            }else {
+                                                alertDialog.dismiss();
+
+
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<CheckUserResponse> call, Throwable t) {
+                                            String name= "hetvi";
+                                            Log.d("method not called",name);
+                                            alertDialog.dismiss();
+
+                                        }
+                                    });
+
+                        }
+
+                        @Override
+                        public void onError(AccountKitError accountKitError) {
+                            Log.d("ERROR",accountKitError.getErrorType().getMessage());
+                        }
+                    });
+
+
+                }
+            }
+        }
+    }
+
+
 
     private void sendLoginRequest() {
         StringRequest stringRequest =  new StringRequest(Request.Method.POST, WebURL.KEY_LOGIN_URL, new Response.Listener<String>() {
@@ -183,30 +290,7 @@ public class Login extends AppCompatActivity {
 
     }
 
-    @SuppressLint("ResourceAsColor")
-    private boolean validation()
-    {
 
-        boolean isValid = true;
-
-        if(emailid.getText().toString().equals("")) {
-            tipEmailid.setError("Email should not be empty");
-          //  tipEmailid.setErrorTextColor(ColorStateList.valueOf(R.color.error_Validation_color));
-            isValid = false;
-        }
-        else{
-            tipEmailid.setErrorEnabled(false);
-        }
-
-        if(password.getText().toString().equals(""))
-        {
-            tipPassword.setError("Password should not be empty");
-            isValid = false;
-        }else {
-            tipPassword.setErrorEnabled(false);
-        }
-        return isValid;
-    }
 
 
     private boolean checkEmail() {
@@ -232,5 +316,25 @@ public class Login extends AppCompatActivity {
             isPasswordValid = true;
         }
         return isPasswordValid;
+    }
+
+
+    private void printKeyHash() {
+
+        try{
+            PackageInfo info =  getPackageManager().getPackageInfo("com.example.drinkshop",
+                    PackageManager.GET_SIGNATURES);
+            for(Signature signature:info.signatures)
+            {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("KEYHASH", Base64.encodeToString(md.digest(),Base64.DEFAULT));
+
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
     }
 }

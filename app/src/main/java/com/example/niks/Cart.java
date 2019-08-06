@@ -43,7 +43,7 @@ public class Cart extends AppCompatActivity {
     TextView tv_cart_amount;
     TextView tvCheckout;
     UserSessionManager userSessionManager;
-    LinearLayout llCart,ll_amount;
+    LinearLayout llCart,ll_amount,ll_empty;
     String totalAmount;
     JSONObject jsonProduct;
     Toolbar toolbar;
@@ -59,6 +59,8 @@ public class Cart extends AppCompatActivity {
         tv_cart_amount = findViewById(R.id.tv_cart_amount);
         tvCheckout = findViewById(R.id.tvCheckout);
         rvCart = findViewById(R.id.rv_cart_product);
+        ll_empty =  findViewById(R.id.ll_no_items_in_cart);
+
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -237,7 +239,7 @@ public class Cart extends AppCompatActivity {
                                  tvCheckout.setBackgroundColor(Color.parseColor("#CC0000"));
                         } else {
                             ll_amount.setVisibility(View.GONE);
-                            llCart.setVisibility(View.GONE);
+                            ll_empty.setVisibility(View.VISIBLE);
                             tvCheckout.setBackgroundColor(Color.parseColor("#CC0000"));
                         }
 
@@ -245,11 +247,14 @@ public class Cart extends AppCompatActivity {
                     else if (flag == 0 && message.equals("No Record Found.")) {
                         //Toast.makeText(this, Message, Toast.LENGTH_SHORT).show();
                         llCart.setVisibility(View.GONE);
+                        ll_empty.setVisibility(View.VISIBLE);
+
 
                     } else {
 
                         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
                         llCart.setVisibility(View.GONE);
+                        ll_empty.setVisibility(View.VISIBLE);
                     }
                 }
             }

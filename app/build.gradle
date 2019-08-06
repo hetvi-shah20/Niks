@@ -10,6 +10,9 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    dataBinding {
+        enabled true
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -38,6 +41,10 @@ dependencies {
     implementation 'com.nex3z:notification-badge:1.0.2'
     implementation 'com.github.ganfra:material-spinner:1.1.1'
     implementation 'com.itextpdf:itextg:5.5.10'
+    implementation 'com.facebook.android:account-kit-sdk:5.+'
+    implementation 'com.github.d-max:spots-dialog:1.1@aar'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
 
 
 }

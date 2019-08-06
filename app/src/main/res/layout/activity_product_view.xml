@@ -103,19 +103,35 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
+                <Button
+                    android:id="@+id/btnMinus"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@color/colorPrimary"
+                    android:gravity="center"
+                    android:text="-"
+                    android:layout_marginLeft="10dp"
+
+                    android:padding="5dp"
+                    android:fontFamily="@font/amiko"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/white"
+                    android:textSize="30dp"
+                    android:textStyle="bold" />
+
                 <EditText
                     android:id="@+id/etQty"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     android:hint="Quantity"
+                    android:minEms="1"
+                    android:gravity="center"
                     android:layout_gravity="center"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
                     android:maxLength="3"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
                     android:inputType="number"
                     android:fontFamily="@font/amiko"
                     android:digits="0123456789"
@@ -124,6 +140,22 @@
                     android:textColorHint="@android:color/black"/>
 
 
+
+
+                <Button
+                    android:id="@+id/btnPlus"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@color/colorPrimary"
+                    android:gravity="center"
+                    android:text="+"
+                    android:layout_marginLeft="10dp"
+                    android:padding="5dp"
+                    android:fontFamily="@font/amiko"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/white"
+                    android:textSize="30dp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -162,7 +194,7 @@
                     android:background="@color/colorPrimary"
                     android:gravity="center"
                     android:padding="15dp"
-                    android:layout_marginTop="55dp"
+                    android:layout_marginTop="59dp"
                     android:text="Add"
                     android:fontFamily="@font/amiko"
                     android:textAllCaps="true"

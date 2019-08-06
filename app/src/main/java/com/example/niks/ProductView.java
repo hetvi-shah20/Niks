@@ -35,11 +35,12 @@ import java.util.Map;
 public class ProductView extends AppCompatActivity {
     Toolbar toolbar;
     TextView prdname,prdweigth,prdprice,prdDescription;
-    Button btnAddtoCard;
+    Button btnAddtoCard,btnplus,btnminus;
     UserSessionManager userSessionManager ;
     String pp;
     ImageView product_image;
     EditText etQty;
+    int counter = 0;
     String ProductID, ProductName, ProductPrice,ProductWeight, ProductDescription, ProductImage;
 
     @Override
@@ -55,7 +56,8 @@ public class ProductView extends AppCompatActivity {
         prdDescription = findViewById(R.id.product_description);
         btnAddtoCard =  findViewById(R.id.btnAddtoCard);
         product_image = findViewById(R.id.product_image);
-
+        btnplus = findViewById(R.id.btnPlus);
+        btnminus = findViewById(R.id.btnMinus);
 
         final Intent intent = getIntent();
         ProductID = intent.getStringExtra(JSONField.PRODUCT_ID);
@@ -89,6 +91,21 @@ public class ProductView extends AppCompatActivity {
         prdDescription.setText(ProductDescription);
 
         Glide.with(this).load(ProductImage).into(product_image);
+
+
+        btnplus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                countIn();
+            }
+        });
+
+        btnminus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                countDs();
+            }
+        });
 
 //        product_image.setImageResource(ProductImage,R.drawable.automotive);
         btnAddtoCard.setOnClickListener(new View.OnClickListener() {
@@ -177,7 +194,7 @@ public class ProductView extends AppCompatActivity {
     private void updateCartProduct() {
 
 
-        String productQty = etQty.getText().toString().trim();
+        String productQty = String.valueOf(counter);
         if (ProductPrice != null && !ProductPrice.isEmpty() && !ProductPrice.equals("") && productQty != null && !productQty.isEmpty() && !productQty.equals("")) {
             double price = Double.parseDouble(ProductPrice);
             DecimalFormat df1 = new DecimalFormat("0.00");
@@ -427,6 +444,20 @@ public class ProductView extends AppCompatActivity {
     }
 
 
+    public void countIn()
+    {
+        counter++;
+        etQty.setText(Integer.toString(counter));
+    }
 
 
+    public void countDs()
+    {
+        counter--;
+        if(counter <= 0)
+        {
+            counter = 1;
+        }
+        etQty.setText(Integer.toString(counter));
+    }
 }

@@ -61,7 +61,7 @@ public class Navigation extends AppCompatActivity
     RecyclerView rvCategory;
     ArrayList<Category> listCategory;
     String name;
-    LinearLayout llCategory,llNoInternetConnection,llEmptyState;
+    LinearLayout llCategory,llNoInternetConnection,llEmptyState,llfirstscreen;
     ViewFlipper viewFlipper;
     NotificationBadge badge ;
     TextView tvEmptyStateMessage;
@@ -80,6 +80,7 @@ public class Navigation extends AppCompatActivity
         rvCategory = findViewById(R.id.rvCategory);
         badge = findViewById(R.id.badge);
 
+        llfirstscreen = findViewById(R.id.llfirstscreen);
         llNoInternetConnection = findViewById(R.id.ll_no_internet);
         llEmptyState = findViewById(R.id.ll_empty_state);
         tvEmptyStateMessage = findViewById(R.id.tvEmptyStateMessage);
@@ -149,26 +150,22 @@ public class Navigation extends AppCompatActivity
                 if (error instanceof ServerError) {
 
                     tvErrorTitle.setText("Server Problem!");
-                    viewFlipper.setVisibility(View.GONE);
-                    llEmptyState.setVisibility(View.GONE);
+                    llfirstscreen.setVisibility(View.GONE);
                     llNoInternetConnection.setVisibility(View.VISIBLE);
                 } else if (error instanceof NoConnectionError) {
 
                     tvErrorTitle.setText("No Internet Connection!");
-                    viewFlipper.setVisibility(View.GONE);
-                    llEmptyState.setVisibility(View.GONE);
+                    llfirstscreen.setVisibility(View.GONE);
                     llNoInternetConnection.setVisibility(View.VISIBLE);
                 } else if (error instanceof TimeoutError) {
 
                     tvErrorTitle.setText("Timeout Error!");
-                    viewFlipper.setVisibility(View.GONE);
-                    llEmptyState.setVisibility(View.GONE);
+                    llfirstscreen.setVisibility(View.GONE);
                     llNoInternetConnection.setVisibility(View.VISIBLE);
                 } else if (error instanceof NetworkError) {
 
                     tvErrorTitle.setText("Network Error!");
-                    viewFlipper.setVisibility(View.GONE);
-                    llEmptyState.setVisibility(View.GONE);
+                    llfirstscreen.setVisibility(View.GONE);
                     llNoInternetConnection.setVisibility(View.VISIBLE);
                 }
 
